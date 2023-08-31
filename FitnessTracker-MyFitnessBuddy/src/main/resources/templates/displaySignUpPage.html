@@ -1,0 +1,378 @@
+<html xmlns:th="https://www.thymeleaf.org/">
+<head>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+	<script src="https://kit.fontawesome.com/e6088e1730.js" crossorigin="anonymous"></script>
+	<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&display=swap" rel="stylesheet">
+	<title>Sign Up Page</title>
+	<script>
+		
+		$(document).ready(function () {
+			let validEmail=false;
+			let validPassword=false;
+			let emailInput = $('#email');
+			let signupButton = $('#signup-btn');
+			let emailMessageBlock = $('#email-flash-message-sub-block');
+			let passwordMessageBlock = $('#password-flash-message-sub-block');
+			//Below is jQuery AJAX call to check if email is already registered
+			emailInput.on('input', function () {
+				let email = emailInput.val();
+				$.get('checkEmail', {email: email}, function (response) {
+					let emailExists = response.exists;
+					if (emailExists) {
+						validEmail=false;
+						//Disable the SignUp button if user enters existing email id or weak password
+						if(validEmail==false||validPassword==false){
+							signupButton.attr('disabled', true);
+						}
+						emailMessageBlock.text("Username already exists.Please choose different username");
+						/*
+						signupButton.addClass("signup-btn-disableCSS");
+						signupButton.attr('disabled', true);
+						*/
+						
+					} else {
+						validEmail=true;
+						//Enable the SignUp button if user enters new email id and string password
+						if(validEmail==true&&validPassword==true){
+							signupButton.attr('disabled', false);
+						}
+						emailMessageBlock.text("");
+						/*
+						signupButton.attr('disabled', false);
+						*/
+						
+						
+					}
+				});
+			});
+			/* Below is jQuery AJAX call to check if user has entered strong password
+			   Strong password criteria:Password should be atleast 8 characters,including 1 uppercase,1 lowercase,1 digit and 1 special character
+			*/
+			let passwordInput = $('#password');
+			passwordInput.on('input', function () {
+				let password = passwordInput.val();
+				$.get('validatePassword', {password: password}, function (response) {
+					let message = response.msg;
+					console.log(message);
+					console.log("response length is" + message.length);
+					if (message.length == 0) {
+						validPassword=true;
+						//Enable the SignUp button if user enters new email id and string password
+						if(validEmail==true&&validPassword==true){
+							signupButton.attr('disabled', false);
+						}
+						passwordMessageBlock.text("");
+						/*
+						signupButton.attr('disabled', false);
+						*/
+						
+					} else {
+						validPassword=false;
+						//Disable the SignUp button if user enters existing email id or weak password
+						if(validEmail==false||validPassword==false){
+							signupButton.attr('disabled', true);
+						}
+						passwordMessageBlock.text(message);
+						/*
+						signupButton.attr('disabled', true);
+						signupButton.addClass("signup-btn-disableCSS");
+						*/
+						
+						
+					}
+				});
+			});
+			
+				
+				if(validEmail==false||validPassword==false){
+					signupButton.attr('disabled', true);
+				}else if(validEmail==true&&validPassword==true){
+					signupButton.attr('disabled', false);
+				}
+		});
+		setTimeout(function () {
+			let sucessMessageBlock = document.getElementById("success-message-block");
+			sucessMessageBlock.innerText = "";
+		}, 3000);
+	</script>
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+			font-family: 'Oswald', sans-serif;
+		}
+		#container {
+			position: relative;
+			width: 100%;
+			height: 100vh;
+			background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(FitnessTrackerTest-Images/Signup-Background-Img.jpg);
+			background-position: center;
+			background-size: cover;
+		}
+		#form-box {
+			position: absolute;
+			width: 500px;
+			max-width: 700px;
+			top: 11px;
+			bottom: 11px;
+			left: 33%;
+			bottom: 20px;
+			background-color: #fff;
+			padding: 30px 60px 30px;
+			text-align: center;
+		}
+		#form-box h1 {
+			font-size: 30px;
+			color: #fe7250;
+			font-weight: 700;
+			margin-bottom: 2px;
+			margin-top: -20px;
+		}
+		#underline-box {
+			height: 2px;
+			display: block;
+			width: 48px;
+			margin: 2px auto 20px;
+			padding: 0;
+			border: 2px solid #fe7250;
+		}
+		.input-field {
+			/*have colored the whole div light grey*/
+			background: #eaeaea;
+			margin: 5px 0;
+			border-radius: 3px;
+			display: flex;
+			align-items: center;
+			max-height: 48px;
+			overflow: hidden;
+			transition: all 0.8s;
+		}
+		input {
+			width: 100%;
+			/* can aslo give same color as input-field*/
+			background: transparent;
+			border: 0;
+			outline: 0;
+			padding: 18px 15px;
+		}
+		.input-field i {
+			margin-left: 15px;
+			color: #999;
+		}
+		form p {
+			text-align: left;
+			font-size: 13px;
+		}
+
+		form a {
+			text-decoration: none;
+			color: #3c00a0;
+		}
+		form a:hover {
+			color: Red;
+		}
+		.flash-message{
+			height: 16px;
+			width: 100%;
+			margin-top: -5px;
+			text-align: left;
+			color: orangered;
+		}
+		#email-flash-message-block{
+			font-size: 11px;
+		}
+		#password-flash-message-block {
+			font-size: 9.8px;
+		}
+		.address-box,
+		.gender-box {
+			display: flex;
+		}
+		.address-box {
+			justify-content: space-between;
+			vertical-align: middle;
+			margin-top: 4px;
+		}
+		.address-box .input-field {
+			margin-top: 0;
+		}
+
+		.gender-box {
+			justify-content: flex-start;
+			vertical-align: middle;
+			margin-top: 7px;
+		}
+		.gender-sub-box {
+			display: flex;
+			justify-content: space-around;
+			margin-left: 10px;
+		}
+		.gender-box p {
+			font-size: 14px;
+			color: rgb(50, 48, 48);
+		}
+
+		input[type=radio] {
+			margin: 0 8px -3px;
+			vertical-align: middle;
+			-webkit-transform: scale(1);
+		}
+		.gender-box label {
+			font-size: 14px;
+		}
+		.tikbox {
+			display: flex;
+			margin-top: 20px;
+		}
+		.tikbox label {
+			font-size: 13px;
+			padding-left: 0;
+			margin-left: 0;
+		}
+		#checkbox {
+			margin-right: 3px;
+			-webkit-transform: scale(0.7);
+			color: rgb(50, 48, 48);
+			width: 5%;
+		}
+		#buttonGrp {
+			margin: 11px auto;
+		}
+		#signup-btn {
+			background: #fe7250;
+			color: #fff;
+			height: 45px;
+			width: 130px;
+			border-radius: 20px;
+			font-size: 15px;
+			padding: 2px 6px;
+			border: 0;
+			outline: 0;
+			cursor: pointer;
+			transition: all ease-in-out 1s;
+		}
+		#signup-btn :hover {}
+		#message-box {}
+		#signin-link {
+			margin: 7px auto;
+			text-align: center;
+		}
+		#signin-link p {
+			font-weight: normal;
+			font-size: 14px;
+		}
+		#signin-link a {
+			text-decoration: none;
+		}
+		#signin-link a:hover {
+			color: #fe7250;
+		}
+		.signup-btn-disableCSS {
+			cursor: none;
+			background: #eaeaea;
+		}
+		#success-message-block {
+			height: 16px;
+			width: 100%;
+			margin-top: -12px;
+			text-align: left;
+			color: #fe7250;
+			font-size: 13px;
+			font-weight:bold;
+		}
+	</style>
+</head>
+<body>
+	<div id="container">
+		<div id="form-box">
+			<h1 id="title">Sign Up</h1>
+			<span id="underline-box"></span>
+			<div id="success-message-block" th:text="${msg}"></div>
+			<div id="inputGrp">
+				<form th:action="@{registerUser}" method="post">
+					<div id="inputGrp">
+						<div class="input-field">
+							<i class="fa-solid fa-envelope"></i>
+							<input type="email" placeholder="Email" name="email" id="email" maxlength="49" required>
+						</div>
+						<div id="email-flash-message-block" class="flash-message">
+							<span id="email-flash-message-sub-block"></span>
+						</div>
+						<div class="input-field">
+							<i class="fa-solid fa-lock"></i>
+							<input type="password" placeholder="Password" name="password" maxlength="14" required
+								id="password">
+						</div>
+						<div id="password-flash-message-block" class="flash-message">
+							<span id="password-flash-message-sub-block"></span>
+						</div>
+						<div class="input-field" id="firstnameField">
+							<i class="fa-solid fa-user"></i>
+							<input type="text" placeholder="FirstName" name="firstName" maxlength="29" required>
+						</div>
+						<div id="firstname-flash-message-block" class="flash-message">
+							<span></span>
+						</div>
+						<div class="input-field" id="lastnameField">
+							<i class="fa-solid fa-user"></i>
+							<input type="text" placeholder="LastName" name="lastName" maxlength="29" required>
+						</div>
+						<div id="lastname-flash-message-block" class="flash-message">
+							<span></span>
+						</div>
+						<div class="input-field" id="DOB">
+							<i class="fa-solid fa-calendar-days"></i>
+							<input type="date" placeholder="DOB" name="DOB" required>
+						</div>
+						<div id="DOB-flash-message-block" class="flash-message">
+							<span></span>
+						</div>
+						<div class="input-field" id="address">
+							<i class="fa-solid fa-address-card"></i>
+							<input type="text" placeholder="Address" name="address" maxlength="99" required>
+						</div>
+						<div id="address-flash-message-block" class="flash-message">
+							<span></span>
+						</div>
+						<div class="address-box">
+							<div class="input-field" id="pincode">
+								<i class="fa-solid fa-location-dot"></i>
+								<input type="number" placeholder="Pincode" name="pincode" min="1" max="999999" required>
+							</div>
+							<div class="input-field" id="country">
+								<i class="fa-solid fa-globe"></i>
+								<input type="text" placeholder="Country" name="country" maxlength="29" required>
+							</div>
+						</div>
+						<div class="gender-box">
+							<div>
+								<p>Gender:</p>
+							</div>
+							<div class="gender-sub-box">
+								<input type="radio" name="gender" value="male" id="male">
+								<label for="Male">Male</label>
+							</div>
+							<div class="gender-sub-box">
+								<input type="radio" name="gender" value="female" id="female">
+								<label for="Female">Female</label>
+							</div>
+						</div>
+						<div class="tikbox">
+							<input id="checkbox" type="checkbox" required>
+							<label for="checkbox">I accept the <a href="#">Terms and Conditions</a>.</label>
+						</div>
+						<div id="buttonGrp">
+							<input type="submit" value="Sign Up" id="signup-btn">
+						</div>
+				</form>
+			</div>
+			<div id="signin-link">
+				<p>Already a User? <a th:href="@{SignInPage}">Sign In</a></p>
+			</div>
+		</div>
+</body>
+</html>
