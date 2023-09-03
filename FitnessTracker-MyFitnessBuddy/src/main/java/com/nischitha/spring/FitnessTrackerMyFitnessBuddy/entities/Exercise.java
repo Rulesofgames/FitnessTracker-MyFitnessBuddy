@@ -20,9 +20,7 @@ import lombok.ToString;
 @Entity
 @Getter
 @Setter
-
 public class Exercise {
-	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
@@ -33,5 +31,4 @@ public class Exercise {
 	@OneToMany(mappedBy="exercise")
 	 @JsonBackReference
 	private Set<Sets> sets;
-
 }

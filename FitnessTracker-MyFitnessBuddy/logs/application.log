@@ -1,0 +1,60 @@
+2023-09-02T15:49:18.036+05:30  INFO 8560 --- [http-nio-8080-exec-10] c.n.s.F.controller.UserController        : Inside displayProfileDeatils()
+2023-09-02T15:49:19.257+05:30  INFO 8560 --- [http-nio-8080-exec-1] c.n.s.F.controller.UserController        : Inside statistics controller
+2023-09-02T15:49:20.580+05:30  INFO 8560 --- [http-nio-8080-exec-3] c.n.s.F.controller.UserController        : Inside getData()
+2023-09-02T15:49:20.581+05:30  INFO 8560 --- [http-nio-8080-exec-3] c.n.s.F.controller.UserController        : Timeframe is: 7 and Metric is: kcal
+2023-09-02T15:52:36.967+05:30  INFO 8560 --- [http-nio-8080-exec-5] c.n.s.F.controller.UserController        : Inside getData()
+2023-09-02T15:52:36.968+05:30  INFO 8560 --- [http-nio-8080-exec-5] c.n.s.F.controller.UserController        : Timeframe is: 7 and Metric is: kcal
+2023-09-02T16:02:21.652+05:30  INFO 8560 --- [http-nio-8080-exec-2] c.n.s.F.controller.UserController        : Inside statistics controller
+2023-09-02T16:02:24.355+05:30  INFO 8560 --- [http-nio-8080-exec-8] c.n.s.F.controller.UserController        : Inside getData()
+2023-09-02T16:02:24.356+05:30  INFO 8560 --- [http-nio-8080-exec-8] c.n.s.F.controller.UserController        : Timeframe is: 7 and Metric is: kcal
+2023-09-02T16:02:39.933+05:30  INFO 8560 --- [http-nio-8080-exec-9] c.n.s.F.controller.UserController        : Inside getData()
+2023-09-02T16:02:39.933+05:30  INFO 8560 --- [http-nio-8080-exec-9] c.n.s.F.controller.UserController        : Timeframe is: 90 and Metric is: kcal
+2023-09-02T16:03:55.413+05:30  INFO 8560 --- [http-nio-8080-exec-3] c.n.s.F.controller.UserController        : Inside getData()
+2023-09-02T16:03:55.413+05:30  INFO 8560 --- [http-nio-8080-exec-3] c.n.s.F.controller.UserController        : Timeframe is: 180 and Metric is: kcal
+2023-09-02T16:10:37.714+05:30  INFO 8560 --- [http-nio-8080-exec-4] c.n.s.F.controller.UserController        : Inside getData()
+2023-09-02T16:10:37.714+05:30  INFO 8560 --- [http-nio-8080-exec-4] c.n.s.F.controller.UserController        : Timeframe is: 30 and Metric is: kcal
+2023-09-02T16:11:05.849+05:30  INFO 8560 --- [http-nio-8080-exec-5] c.n.s.F.controller.UserController        : Inside getData()
+2023-09-02T16:11:05.849+05:30  INFO 8560 --- [http-nio-8080-exec-5] c.n.s.F.controller.UserController        : Timeframe is: 7 and Metric is: bodyweight
+2023-09-02T16:16:23.553+05:30  INFO 8560 --- [http-nio-8080-exec-2] c.n.s.F.controller.UserController        : Inside statistics controller
+2023-09-02T16:16:29.363+05:30  INFO 8560 --- [http-nio-8080-exec-8] c.n.s.F.controller.UserController        : Inside getData()
+2023-09-02T16:16:29.363+05:30  INFO 8560 --- [http-nio-8080-exec-8] c.n.s.F.controller.UserController        : Timeframe is: 7 and Metric is: kcal
+2023-09-02T16:17:07.397+05:30  INFO 10228 --- [main] .FitnessTrackerMyFitnessBuddyApplication : Starting FitnessTrackerMyFitnessBuddyApplication using Java 17.0.5 with PID 10228 (C:\Users\Dell\git\FitnessTracker-MyFitnessBuddy\FitnessTracker-MyFitnessBuddy\bin\main started by Dell in C:\Users\Dell\git\FitnessTracker-MyFitnessBuddy\FitnessTracker-MyFitnessBuddy)
+2023-09-02T16:17:07.406+05:30  INFO 10228 --- [main] .FitnessTrackerMyFitnessBuddyApplication : No active profile set, falling back to 1 default profile: "default"
+2023-09-02T16:17:08.759+05:30  INFO 10228 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-09-02T16:17:08.887+05:30  INFO 10228 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 108 ms. Found 4 JPA repository interfaces.
+2023-09-02T16:17:09.765+05:30  INFO 10228 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2023-09-02T16:17:09.788+05:30  INFO 10228 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2023-09-02T16:17:09.789+05:30  INFO 10228 --- [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.5]
+2023-09-02T16:17:09.980+05:30  INFO 10228 --- [main] .c.C.[.[.[/fitnesstrackermyfitnessbuddy] : Initializing Spring embedded WebApplicationContext
+2023-09-02T16:17:09.982+05:30  INFO 10228 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2468 ms
+2023-09-02T16:17:10.208+05:30  INFO 10228 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2023-09-02T16:17:10.834+05:30  INFO 10228 --- [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@6aae0e6f
+2023-09-02T16:17:10.838+05:30  INFO 10228 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2023-09-02T16:17:10.930+05:30  INFO 10228 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-09-02T16:17:11.088+05:30  INFO 10228 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.1.6.Final
+2023-09-02T16:17:11.478+05:30  WARN 10228 --- [main] org.hibernate.orm.deprecation            : HHH90000021: Encountered deprecated setting [javax.persistence.sharedCache.mode], use [jakarta.persistence.sharedCache.mode] instead
+2023-09-02T16:17:11.792+05:30  INFO 10228 --- [main] SQL dialect                              : HHH000400: Using dialect: org.hibernate.dialect.MySQLDialect
+2023-09-02T16:17:13.268+05:30  INFO 10228 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-09-02T16:17:13.290+05:30  INFO 10228 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-09-02T16:17:13.782+05:30  WARN 10228 --- [main] ocalVariableTableParameterNameDiscoverer : Using deprecated '-debug' fallback for parameter name resolution. Compile the affected code with '-parameters' instead or avoid its introspection: com.nischitha.spring.FitnessTrackerMyFitnessBuddy.repos.WorkoutReopository
+2023-09-02T16:17:13.924+05:30  WARN 10228 --- [main] ocalVariableTableParameterNameDiscoverer : Using deprecated '-debug' fallback for parameter name resolution. Compile the affected code with '-parameters' instead or avoid its introspection: com.nischitha.spring.FitnessTrackerMyFitnessBuddy.repos.UserRepository
+2023-09-02T16:17:14.527+05:30  WARN 10228 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-09-02T16:17:14.771+05:30  INFO 10228 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2023-09-02T16:17:15.183+05:30  INFO 10228 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path '/fitnesstrackermyfitnessbuddy'
+2023-09-02T16:17:15.203+05:30  INFO 10228 --- [main] .FitnessTrackerMyFitnessBuddyApplication : Started FitnessTrackerMyFitnessBuddyApplication in 8.541 seconds (process running for 9.865)
+2023-09-02T16:17:19.058+05:30  INFO 10228 --- [http-nio-8080-exec-1] .c.C.[.[.[/fitnesstrackermyfitnessbuddy] : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-09-02T16:17:19.059+05:30  INFO 10228 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2023-09-02T16:17:19.061+05:30  INFO 10228 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2023-09-02T16:17:19.245+05:30  INFO 10228 --- [http-nio-8080-exec-1] c.n.s.F.controller.UserController        : Inside logout
+2023-09-02T16:17:31.615+05:30  INFO 10228 --- [http-nio-8080-exec-5] c.n.s.F.controller.UserController        : Inside CheckLogIn()
+2023-09-02T16:17:31.885+05:30  INFO 10228 --- [http-nio-8080-exec-5] c.n.s.F.controller.UserController        : LogIn Sucessfull
+2023-09-02T16:17:31.984+05:30  INFO 10228 --- [http-nio-8080-exec-7] c.n.s.F.controller.UserController        : Inside workoutSummary
+2023-09-02T16:17:35.012+05:30  INFO 10228 --- [http-nio-8080-exec-8] c.n.s.F.controller.StatisticsController  : Inside statistics controller
+2023-09-02T16:17:39.329+05:30  INFO 10228 --- [http-nio-8080-exec-9] c.n.s.F.controller.StatisticsController  : Inside getData()
+2023-09-02T16:17:39.329+05:30  INFO 10228 --- [http-nio-8080-exec-9] c.n.s.F.controller.StatisticsController  : Category is: overall SubCategory is: overallTimeframe is: 7 and Metric is: bodyweight
+2023-09-02T16:17:39.409+05:30  INFO 10228 --- [http-nio-8080-exec-9] c.n.s.F.s.FitnessTrackerServiceImpl      : Data to generate graph is :
+2023-09-02T16:17:39.410+05:30  INFO 10228 --- [http-nio-8080-exec-9] c.n.s.F.s.FitnessTrackerServiceImpl      : 2023-08-30 101.0000
+2023-09-02T16:17:39.411+05:30  INFO 10228 --- [http-nio-8080-exec-9] c.n.s.F.s.FitnessTrackerServiceImpl      : 2023-08-29 98.0000
+2023-09-02T16:17:39.411+05:30  INFO 10228 --- [http-nio-8080-exec-9] c.n.s.F.s.FitnessTrackerServiceImpl      : 2023-08-28 34.0000
+2023-09-02T16:38:15.936+05:30  WARN 10228 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=16m4s909ms453µs700ns).
+2023-09-02T17:07:33.260+05:30  WARN 10228 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=13m46s768ms869µs500ns).

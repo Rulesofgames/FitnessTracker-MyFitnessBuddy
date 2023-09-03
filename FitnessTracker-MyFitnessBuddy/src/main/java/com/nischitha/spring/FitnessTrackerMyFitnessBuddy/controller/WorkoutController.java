@@ -50,77 +50,62 @@ public class WorkoutController {
 
 	@RequestMapping("addWorkout")
 	public  String addWorkout(ModelMap modelmap,HttpSession session) {
-		LOGGER.info("Inside addWorkout,Start");
+		LOGGER.info("Inside addWorkout()");
 		int userId=(int)session.getAttribute("userId");
-		// modelmap.addAttribute("userId",id);
-	
 		List<Workout> workoutList = workoutRepo.findByUserId(userId,Sort.by(new Sort.Order(Direction.DESC, "date"), new Sort.Order(Direction.DESC, "startTime")));
 		modelmap.addAttribute("workoutList", workoutList);
-		modelmap.addAttribute("exerciseList", exerciseRepo.findAll());//might need to delete later
-		LOGGER.info("Inside addWorkout,end");
+		modelmap.addAttribute("exerciseList", exerciseRepo.findAll());
 		return "AddWorkout";
 	}
 
-	//@RequestMapping("addSets")
-	@GetMapping("/addSets")
+	@GetMapping("addSets")
 	public String addSets(ModelMap modelmap) {
+		LOGGER.info("Inside addSets()");
 		List<Workout> list = workoutRepo.findAll();
 		modelmap.addAttribute("list", list);
-		LOGGER.info("INSIDE ADD SETS");
 		return "addSets";
 	}
 
 	@PostMapping("saveWorkout")
 	public String saveWorkout(@ModelAttribute("workout") Workout workout, ModelMap modelmap,HttpSession session) {
-		LOGGER.info("Inside saveWorkout");
+		LOGGER.info("Inside saveWorkout()");
 		int userId=(int)session.getAttribute("userId");
 		workout.setUser(userRepo.findById(userId).get());
-
 		Workout savedWorkout = fitnessTrackerServiceImpl.saveWorkout(workout);
-
+		LOGGER.info("Saved workout:"+workout);
 		return "redirect:addWorkout";
 
-	}
-/*
-	@PostMapping("saveEditWorkout")
-	public String saveEditWorkout(@ModelAttribute("workout") Workout workout,HttpSession session) {
-		LOGGER.info("Iniside save Edit workout");
-		int userId=(int)session.getAttribute("userId");
-		workout.setUser(userRepo.getById(userId));
-		Workout savedWorkout = fitnessTrackerServiceImpl.saveWorkout(workout);
-		return "redirect:addWorkout";
-	}
-*/	
+	}	
 
 	@PostMapping("saveEditSet")
 	public String saveEditSet(@ModelAttribute("set") Sets set, @RequestParam("workoutId") Integer workoutId,
 			@RequestParam("exerciseId") Integer exerciseId, ModelMap modelmap) {
-		LOGGER.info("edit set to be saved for workout" + workoutId);
-		LOGGER.info("Exercsie to be added to set" + exerciseId);
+		LOGGER.info("Inside saveEditSet()");
+		LOGGER.info("Edit set to be saved for workout : " + workoutId);
+		LOGGER.info("Exercsie to be added to set : " + exerciseRepo.findById(exerciseId).get());
 		set.setWorkout(workoutRepo.findById(workoutId).get());
-		LOGGER.info("Workout saved succesfully");
-
 		set.setExercise(exerciseRepo.findById(exerciseId).get());
-		LOGGER.info("Exercise saved succesfully");
 		Sets savedSet = setsRepo.save(set);
+		LOGGER.info("Set saved succesfully");
 		return "redirect:/viewWorkoutLog?id=" + workoutId;
 	}
 
 	@PostMapping("saveSet")
 	public String saveSet(@ModelAttribute("Sets") Sets sets, ModelMap modelmap,
 			@RequestParam("exerciseId") Integer exerciseId, @RequestParam("workoutId") Integer workoutId) {
-
+		LOGGER.info("Inside saveSet()");
 		Exercise exercise = exerciseRepo.findById(exerciseId).get();
 		Workout workout = workoutRepo.findById(workoutId).get();
 		sets.setWorkout(workout);
 		sets.setExercise(exercise);
 		Sets savedSet=setsRepo.save(sets);
+		LOGGER.info("Setsaved succesfully");
 		return "redirect:/viewWorkoutLog?id="+workoutId;
 	}
 
 	@GetMapping("/viewWorkoutLog")
 	public String viewWorkoutLog(@RequestParam("id") Integer workoutId, ModelMap modelmap) {
-		LOGGER.info("Inside viewWorkoutLog");
+		LOGGER.info("Inside viewWorkoutLog()");
 		modelmap.addAttribute("exerciseList", exerciseRepo.findAll());
 		modelmap.addAttribute("setsList", setsRepo.findAllByWorkoutId(workoutId,Sort.by(new Sort.Order(Direction.DESC, "exercise"))));
 		modelmap.addAttribute("workoutId",workoutId);
@@ -129,13 +114,16 @@ public class WorkoutController {
 
 	@PostMapping("deleteWorkout")
 	public String deleteWorkout(@RequestParam("id") Integer workoutId) {
+		LOGGER.info("Inside deleteWorkout()");
+		LOGGER.info("Workout to be deleted: "+workoutRepo.findById(workoutId).get());
 		workoutRepo.deleteById(workoutId);
 		return "redirect:addWorkout";
 	}
 
 	@PostMapping("deleteSet")
 	public String deleteSet(@RequestParam("setId") Integer setId, @RequestParam("workoutId") Integer workoutId) {
-		LOGGER.info("Inside delete Set" + setId);
+		LOGGER.info("Inside delete Set");
+		LOGGER.info("Set to be deleted: "+setsRepo.findById(setId).get());
 		setsRepo.deleteById(setId);
 		return "redirect:/viewWorkoutLog?id=" + workoutId;
 	}
@@ -149,7 +137,7 @@ public class WorkoutController {
 	
 	@GetMapping("summary")
 	public @ResponseBody List<Workout> workoutSummary(HttpSession session){
-		LOGGER.info("Inside workoutSummary");
+		LOGGER.info("Inside workoutSummary()");
 		int userId=(int)session.getAttribute("userId");
 		List<Workout> list=workoutRepo.findByUserId(userId,Sort.by(new Sort.Order(Direction.DESC, "date"), new Sort.Order(Direction.DESC, "startTime")));
 		return list;

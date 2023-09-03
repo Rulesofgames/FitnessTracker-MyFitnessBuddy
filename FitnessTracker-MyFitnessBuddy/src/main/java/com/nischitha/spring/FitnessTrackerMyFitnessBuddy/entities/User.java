@@ -24,7 +24,6 @@ import lombok.ToString;
 @Getter
 @Setter
 public class User {
-
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
@@ -34,8 +33,6 @@ public class User {
 	private String firstName;
 	@Column(name="lastname")
 	private String lastName;
-	/*@DateTimeFormat(pattern = "yyyy-MM-dd")
-	@Temporal(TemporalType.DATE)*/
 	@Column(name="birthdate")
 	private LocalDate DOB;
 	private String address;
@@ -45,5 +42,4 @@ public class User {
 	@OneToMany(mappedBy="user")
 	@JsonManagedReference
 	private Set<Workout> workout;
-	
 }

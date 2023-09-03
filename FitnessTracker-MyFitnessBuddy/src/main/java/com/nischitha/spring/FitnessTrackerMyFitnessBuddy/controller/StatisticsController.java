@@ -28,7 +28,7 @@ import jakarta.servlet.http.HttpSession;
 @Controller
 public class StatisticsController {
 
-	private static final Logger LOGGER = LoggerFactory.getLogger(UserController.class);
+	private static final Logger LOGGER = LoggerFactory.getLogger(StatisticsController.class);
 
 	@Autowired
 	WorkoutReopository workoutRepo;
@@ -39,28 +39,16 @@ public class StatisticsController {
 	@RequestMapping("statistics")
 	public String generateGraphs(ModelMap modelmap) {
 		LOGGER.info("Inside statistics controller");
-
-	
 		return "displayGenerateGraphs";
 	}
 	
 	@GetMapping("data")
 	public  @ResponseBody  Map<String,String> getData(ModelMap modelmap,@RequestParam("category")String category,@RequestParam("subCategory")String subCategory,@RequestParam("metric")String metric,@RequestParam("timeframe")Integer timeframe,HttpSession session){
-		LOGGER.info("Inside getData mthod");
-		LOGGER.info("Timeframe is"+timeframe+"Metric is"+metric);
+		LOGGER.info("Inside getData()");
+		LOGGER.info("Category is: "+category +" SubCategory is: "+subCategory+" Timeframe is: "+timeframe+" and Metric is: "+metric);
 		int userId=(int)session.getAttribute("userId");
-		
 		return fitnessTrackerServiceImpl.generateGraphData(category,subCategory,metric, timeframe, userId);
-		
-		/*List<Object[]> list=workoutRepo.findDuration(timeframe);
-	
-		Map<String,String> map=new HashMap<>();
-		for(Object[] obj:list) {
-			map.put(obj[0].toString(), (obj[1]).toString());
-			
-		}
-	
-		return map;*/
+
 	}
 
 }

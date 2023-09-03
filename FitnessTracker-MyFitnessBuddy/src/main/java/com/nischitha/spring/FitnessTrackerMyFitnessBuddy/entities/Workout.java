@@ -27,7 +27,6 @@ import lombok.ToString;
 @Getter
 @Setter
 public class Workout {
-
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
@@ -43,11 +42,9 @@ public class Workout {
 	private String workoutType;
 	@ManyToOne
 	@JoinColumn(name="user_id")
-	 @JsonBackReference
+	@JsonBackReference
 	private User user;
 	@OneToMany(mappedBy="workout",fetch=FetchType.EAGER,cascade=CascadeType.ALL)
 	@JsonManagedReference
 	private Set<Sets> sets;
-	
-
 }

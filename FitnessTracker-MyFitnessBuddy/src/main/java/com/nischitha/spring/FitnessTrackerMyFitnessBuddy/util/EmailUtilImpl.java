@@ -2,11 +2,15 @@ package com.nischitha.spring.FitnessTrackerMyFitnessBuddy.util;
 
 import java.io.UnsupportedEncodingException;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Component;
+
+import com.nischitha.spring.FitnessTrackerMyFitnessBuddy.services.FitnessTrackerServiceImpl;
 
 import jakarta.mail.MessagingException;
 import jakarta.mail.internet.InternetAddress;
@@ -14,6 +18,8 @@ import jakarta.mail.internet.MimeMessage;
 
 @Component
 public class EmailUtilImpl implements EmailUtil {
+	
+	private static final Logger LOGGER = LoggerFactory.getLogger(EmailUtilImpl.class);
 
 	@Autowired
 	private JavaMailSender sender;
@@ -64,9 +70,9 @@ public class EmailUtilImpl implements EmailUtil {
 			helper.setFrom(from);
 
 		} catch (MessagingException e1) {
-			e1.printStackTrace();
+			LOGGER.error("Exception(MessagingException) inside sendEmail is:"+e1);
 		} catch (UnsupportedEncodingException e) {
-			e.printStackTrace();
+			LOGGER.error("Exception(UnsupportedEncodingException) inside sendEmail is:"+e);
 		}
 		sender.send(message);
 

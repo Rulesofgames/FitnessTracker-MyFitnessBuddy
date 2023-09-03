@@ -1,5 +1,4 @@
 <html xmlns:th="https://www.thymeleaf.org/">
-
 <head>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
 	<meta charset="UTF-8" />
@@ -8,24 +7,19 @@
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&display=swap" rel="stylesheet">
-	<script th:inline="javascript">
-		console.log("Inise script tag");
+	<script>
 		$(function () {
-			console.log("Inside function");
 			loadWorkoutSummary();
 		});
 
 		function loadWorkoutSummary() {
-			console.log("loadWorkoutSummary");
 			$.ajax({
 				url: "summary",
 				method: "GET",
 				dataType: "json",
 				success: function (data) {
-					console.log("Get request success");
 					let workoutSummary = $("#workout-summary");
 					if (data.length == 0) {
-						console.log("Insise no data block");
 						let noDataDiv = $("<div>").addClass("no-data-css").text("Start tracking your fitness journey now...");
 						workoutSummary.addClass("no-data-workout-summary");
 						workoutSummary.append(noDataDiv);
@@ -38,13 +32,11 @@
 						data.forEach(function (workout) {
 							let dateObj = new Date(workout.date);
 							let monthYear = dateObj.toLocaleString('default', {month: 'long', year: 'numeric'});
-							console.log(monthYear);
 							if (!workoutsByMonthYear[monthYear]) {
 								workoutsByMonthYear[monthYear] = [];
 							}
 							workoutsByMonthYear[monthYear].push(workout);
 						});
-
 
 						Object.keys(workoutsByMonthYear).forEach(function (monthYear) {
 							let workoutCount = 0;
@@ -59,21 +51,20 @@
 								workoutCount++;
 								let eachWorkout = $("<div>").addClass("each-workout");
 								let dateObject = new Date(workout.date);
+								//update date of workout
 								dayDate = dateObject.toLocaleString('default', {month: 'long', day: 'numeric'});
+								//update day of workout
 								let dayDiv = $("<div>").addClass("each-workout__dayDate__day").text(weekdays[dateObject.getDay()]);
 								let date = $("<div>").addClass("each-workout__dayDate__date").text(dayDate);
 								let dayDateDiv = $("<div>").addClass("each-workout__dayDate");
 								dayDateDiv.append(dayDiv);
 								dayDateDiv.append(date);
 								eachWorkout.append(dayDateDiv);
-								/*var workoutDiv = $("<div>").addClass("workout");
-								var dateDiv = $("<div>").addClass("date").text(workout.date);
-								workoutDiv.append(dateDiv);*/
 								let workoutOverviewDiv = $("<div>").addClass("each-workout__overview");
+								//update Type of workout-Morning,MidDay,Evening,Night
 								let workoutTypeDiv = $("<div>").addClass("each-workout__overview__workout-type").text(workout.workoutType + " Workout");
 								workoutOverviewDiv.append(workoutTypeDiv);
 								let exerciseListDiv = $("<div>").addClass("each-workout__overview__exercise-List");
-								//var setsDiv = $("<div>").addClass("sets");
 								//calculate the number of sets done for each exercise
 								let exerciseCount = {};
 								let exerciseSetList = {};
@@ -90,9 +81,10 @@
 								Object.keys(exerciseCount).forEach(function (exerciseName) {
 									let exerciseSetDiv = $("<div>").addClass("each-workout__overview__exercise-List__sets");
 									let exerciseSetHoverDiv = $("<div>").addClass("each-workout__overview__exercise-List__set__hover");
+										//Counter to keep track of sets of each exercise
 									let setCount = 1;
 									exerciseSetList[exerciseName].forEach(function (set) {
-										let setDiv = $("<div>").addClass("eachset-hover").text(exerciseName + " Set" + setCount + " Weight:" + set.weight + " Reps: " + set.reps + " Mins:" + set.minutes + " Distance: " + set.distance + " Kcal: " + set.Kcal);
+										let setDiv = $("<div>").addClass("eachset-hover").text(exerciseName + " Set" + setCount + "  Weight:" + set.weight + "  Reps:" + set.reps + "  Mins:" + set.minutes + "  Distance:" + set.distance + "  Kcal:" + set.kcal);
 										exerciseSetHoverDiv.append(setDiv);
 										setCount++;
 									});
@@ -219,20 +211,17 @@
 		}
 		.each-workout {
 			display: flex;
-			justify-content: space-between;
+			justify-content:space-between;
 			border-bottom: 1px solid #dddddd;
 			padding-left: 25px;
 			padding-right: 25px;
-		}
-		.each-workout:hover {
-			/*cursor: pointer;
-			background-color: #f6f9fc;*/
 		}
 		.month-workout-list {
 			display: flex;
 			flex-direction: column;
 		}
 		.each-workout__dayDate {
+			/*flex-basis: 90px;*/
 			display: flex;
 			flex-direction: column;
 		}
@@ -243,9 +232,10 @@
 			font-weight: 500;
 		}
 		.each-workout__overview {
+			/*flex-basis: 180px;*/
 			display: flex;
 			flex-direction: column;
-			justify-content: start;
+			justify-content:left;
 		}
 		.each-workout__overview__workout-type {
 			font-size: 22px;

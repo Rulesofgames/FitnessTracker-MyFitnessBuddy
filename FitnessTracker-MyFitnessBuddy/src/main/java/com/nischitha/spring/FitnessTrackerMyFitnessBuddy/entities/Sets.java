@@ -26,11 +26,9 @@ import lombok.ToString;
 @Getter
 @Setter
 public class Sets {
-	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
-	
 	private int weight;
 	private int reps;
 	private int minutes;
@@ -46,6 +44,5 @@ public class Sets {
 	@JoinColumn(name="exercise_id")
 	@JsonManagedReference
 	private Exercise exercise;
-	
 
 }

@@ -1,5 +1,4 @@
 <html xmlns:th="https://www.thymeleaf.org/">
-
 <head>
 	<meta charset="UTF-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -14,9 +13,6 @@
 			box-sizing: border-box;
 			font-family: 'Oswald', sans-serif;
 		}
-
-		body {}
-
 		#header-block {
 			position: fixed;
 			top: 0;
@@ -28,14 +24,12 @@
 			justify-content: space-around;
 			z-index: 99;
 		}
-
 		#first-header-block {
 			display: flex;
 			height: 50px;
 			background-color: rgb(17, 15, 15);
 			border-bottom: 1px solid #dddddd;
 		}
-
 		#navigation-block {
 			display: flex;
 			justify-content: space-between;
@@ -45,14 +39,12 @@
 			vertical-align: middle;
 			margin-right: 20px;
 		}
-
 		#navigation-block a {
 			text-decoration: none;
 			letter-spacing: 0.5px;
 			line-height: 1px;
 			color: white;
 		}
-
 		#logo-block {
 			color: white;
 			font-family: 'Oswald', sans-serif;
@@ -66,7 +58,6 @@
 			padding-left: 20px;
 			width: 45%;
 		}
-
 		.add-exercise-header {
 			display: flex;
 			justify-content: space-between;
@@ -76,12 +67,10 @@
 			height: 100px;
 			background-color: white;
 		}
-
 		.add-exercise-header p {
 			font-size: 32px;
 			font-weight: 200;
 		}
-
 		#add-exercise-btn {
 			margin-right: 25px;
 			font-size: 14px;
@@ -92,7 +81,6 @@
 			color: #fe7250;
 			background-color: #fff;
 		}
-
 		button {
 			outline: none;
 			border: none;
@@ -101,7 +89,6 @@
 			padding: 5px;
 			color: #ffffff;
 		}
-
 		#whole-editset-modal-window,
 		#whole-deleteSet-modal-window,
 		#whole-exercise-modal-window {
@@ -114,7 +101,6 @@
 			background-color: rgba(0, 0, 0, 0.8);
 			z-index: 100;
 		}
-
 		.edit-set-modal,
 		.add-exercise-modal {
 			margin: 150px auto;
@@ -127,7 +113,6 @@
 			animation-name: modalSlideUp;
 			animation-duration: 1s;
 		}
-
 		.delete-set-modal {
 			margin: 260px auto;
 			width: 30%;
@@ -139,42 +124,35 @@
 			animation-name: modalSlideUp;
 			animation-duration: 1s;
 		}
-
 		#delete-set__form__confirmMessage {
 			text-align: center;
 		}
-
 		.modal-header {
 			background: white;
 			text-align: center;
 			padding: 5px 5px;
 			height: 13%;
 		}
-
 		.modal-header h2 {
 			color: #fe7250;
 			font-size: 30px;
 			font-weight: 700;
 		}
-
 		#delete-set-modal__formbox {
 			padding-top: 40px;
 		}
-
 		#close-editset-modal,
 		#close-deleteset-modal,
 		#close-exercise-modal {
 			float: right;
 			color: #a9a5bf;
 		}
-
 		#close-editset-modal:hover,
 		#close-deleteset-modal:hover,
 		#close-exercise-modal:hover {
 			cursor: pointer;
 			color: #333;
 		}
-
 		.input-field {
 			/*have colored the whole div light grey
             background: #eaeaea;*/
@@ -190,28 +168,23 @@
 			display: flex;
 			justify-content: space-between;
 		}
-
 		.input-field label {
 			padding-left: 60px;
 			margin-left: 55px;
 		}
-
 		.input-field input,
 		select {
 			padding-left: -30px;
 			margin-left: -10px;
 			width: 30%;
 		}
-
 		.input-field-textarea {
 			height: 53px;
 		}
-
 		.buttnGrp {
 			margin: 11px auto;
 			text-align: Center;
 		}
-
 		.buttnGrp input[type=submit],
 		#cancel-delete-set-btn {
 			background: #fe7250;
@@ -228,23 +201,19 @@
 			margin: 10px auto;
 			transition: all ease-in-out 1s;
 		}
-
 		.table-section {
 			width: 100%;
 			margin-top: 148px;
 		}
-
 		table {
 			display: table;
 			width: 100%;
 			table-layout: fixed;
 			border-collapse: collapse;
 		}
-
 		thead {
 			background-color: #fe7250;
 		}
-
 		thead th {
 			position: sticky;
 			top: 148px;
@@ -252,9 +221,7 @@
 			background-color: #f6f9fc;
 			font-size: 15px;
 		}
-
-		th,
-		td {
+		th,td {
 			border-bottom: 1px solid #dddddd;
 			padding-top:7px;
 			padding-bottom: 7px;
@@ -263,48 +230,34 @@
 			text-align: center;
 			z-index: 0;
 		}
-
 		tr {
 			width: 100%;
 			height: 60px;
 		}
-
 		tbody tr:hover {
 			color: #fe7250;
 			cursor: pointer;
 			background-color: #f6f9fc;
 		}
-
 		.edit-set-btn {
 			background-color: #0298cf;
 		}
-
 		.delete-set-btn {
 			background-color: #dc3545;
 		}
-
 		.actionButtonClass {
 			width: 10%;
 		}
-
-		.notesColumn {}
-
-
-
 		.fas {
 			font-weight: 900;
 		}
-
 		.icon-box {
 			position: relative;
 			cursor: pointer;
 			transition: all 0.5s;
 			padding: 6px 6px;
 			display: inline-block;
-
 		}
-
-
 		.icon-box__hovercontent {
 			position: absolute;
 			top: 100%;
@@ -320,9 +273,7 @@
 			background-color: grey;
 			color: #000;
 			z-index: 1;
-
 		}
-
 		.icon-box__hovercontent:before {
 			position: absolute;
 			content: "";
@@ -333,22 +284,17 @@
 			left: 45%;
 			transform: translateX(50%) rotate(45deg);
 		}
-
 		.icon-box__hovercontent p {
 			margin: 0;
 		}
-
 		.icon-box:hover .icon-box__hovercontent {
 			visibility: visible;
 			opacity: 1;
 		}
-
-
 		@keyframes modalSlideUp {
 			0% {
 				transform: translateY(1500px);
 			}
-
 			100% {
 				transform: translateY(0px);
 			}
@@ -457,9 +403,7 @@
 							<input type="Submit" value="Delete">
 						</div>
 					</form>
-
 				</div>
-
 			</div>
 		</div>
 		<!--Add Exercise-->
@@ -512,7 +456,6 @@
 				</div>
 			</div>
 		</div>
-
 		<div class="table-section">
 			<table>
 				<thead>

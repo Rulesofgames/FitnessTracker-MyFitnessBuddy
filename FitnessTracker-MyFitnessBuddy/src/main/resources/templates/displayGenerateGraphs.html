@@ -1,15 +1,12 @@
 <html xmlns:th="https://www.thymeleaf.org/">
-
 <head>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
-	
 	<meta charset="UTF-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<meta http-equiv="X-UA-Compatible" content="ie=edge" />
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&display=swap" rel="stylesheet">
-
 	<title>Generate Graphs</title>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" />
@@ -19,9 +16,7 @@
 			margin: 0;
 			box-sizing: border-box;
 			font-family: 'Oswald', sans-serif;
-
 		}
-
 		#header-block {
 			position: fixed;
 			top: 0;
@@ -33,7 +28,6 @@
 			justify-content: space-around;
 			z-index: 99;
 		}
-
 		#first-header-block {
 			display: flex;
 			height: 50px;
@@ -41,7 +35,6 @@
 			background-color: rgb(17, 15, 15);
 			border-bottom: 1px solid #dddddd;
 		}
-
 		#navigation-block {
 			display: flex;
 			justify-content: space-between;
@@ -51,7 +44,6 @@
 			vertical-align: middle;
 			margin-right: 20px;
 		}
-
 		#navigation-block a {
 			text-decoration: none;
 			letter-spacing: 0.5px;
@@ -59,7 +51,6 @@
 			color: white;
 			font-size: 16px;
 		}
-
 		#logo-block {
 			color: white;
 			font-family: 'Oswald', sans-serif;
@@ -73,7 +64,6 @@
 			padding-left: 20px;
 			width: 45%;
 		}
-
 		.add-workout-header {
 			display: flex;
 			justify-content: space-between;
@@ -83,18 +73,13 @@
 			height: 100px;
 			background-color: white;
 		}
-
 		.add-workout-header p {
 			font-size: 32px;
 			font-weight: 250;
 		}
-
 		#mainBlock {
-
 			margin-top: 152px;
-
 		}
-
 		.select {
 			color: #333333;
 			background-color: #eeeeee;
@@ -105,41 +90,32 @@
 			font-size: 14px;
 			letter-spacing: 0.5px;
 			width: 183px;
-
 		}
-
 		.select:focus,
 		.select:hover {
 			outline: none;
 			border: 1px solid #bbbbbb;
 		}
-
 		.select option {
 			font-size: 14px;
 		}
-
 		#dropdown-buttons {
 			text-align: center;
 			width: 100%;
 		}
-
 		.dropdwon {
 			display: inline-block;
 			margin: 0 10px;
-
 		}
-
 		label {
 			margin-right: 7px;
 			letter-spacing: 1px;
 			font-size: 16px;
 		}
-
 		#graphContainer {
 			margin: 40px auto;
 			width: 60%;
 		}
-
 		#generateGraphButton {
 			background: #fe7250;
 			color: #fff;
@@ -155,14 +131,12 @@
 			margin-left: 10px;
 			transition: all ease-in-out 1s;
 		}
-
 		#dropdown-buttons {
 			vertical-align: middle;
 			text-align: center;
 		}
 	</style>
 </head>
-
 <body>
 	<div id="header-block">
 		<div id="first-header-block">
@@ -179,7 +153,6 @@
 			<p>Generate Graphs</p>
 		</div>
 	</div>
-
 	<div id="mainBlock">
 		<div id="dropdown-buttons">
 			<div class="dropdwon">
@@ -232,8 +205,6 @@
 	<script src="https://code.highcharts.com/modules/no-data-to-display.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<script th:inline="javascript">
-
-
 		let subCategories = {
 			"Abs": ["Crunches", "Leg Raises"],
 			"Back": ["Assissted Chin Up", "Assissted Pull Up", "Barbell Row", "Cable Row", "Chin Up", "Deadlift", "Dumbbell Row", "Hyperextensions", "Pull Up", "Pulldowns"],
@@ -244,12 +215,10 @@
 			"Shoulders": ["Dumbbell Lateral Raises", "Military Press", "Shoulder Dumbbell Press", "Upright Rows"],
 			"Triceps": ["Assisted Dips", "Close Grip Bench Press", "Dips", "Pushdowns", "Triceps Extensions"]
 		};
-
 		let metricList1 = ["Calories", "Sets", "Reps", "Weight", "Minutes", "Distance"];
 		let metricList2 = ["Calories", "Duration", "BodyWeight", "Sets", "Reps", "Weight", "Minutes", "Distance"];
 
-
-		// Get references to the category and sub-category dropdown lists
+		// Get references to the category,sub-category and metric dropdown lists
 		let categoryDropdown = document.getElementById("category");
 		let subcategoryDropdown = document.getElementById("sub-category");
 		let metricDropdown = document.getElementById("metric");
@@ -257,21 +226,20 @@
 		categoryDropdown.addEventListener("change", function () {
 			// Get the selected category
 			let selectedCategory = categoryDropdown.value;
-
 			// Clear the sub-category dropdown list
 			subcategoryDropdown.innerHTML = "<option value='overall'>Overall Statistics</option>";
 			//metricDropdown.innerHTML="<option value='calories'>Calories</option>";
 			metricDropdown.innerHTML = "";
 			// Populate the sub-category dropdown list with options for the selected category
 			if (selectedCategory !== "overall") {
-				//subcategoryDropdown.disabled = false;
+				
 				for (let i = 0; i < subCategories[selectedCategory].length; i++) {
 					let option = document.createElement("option");
 					option.text = subCategories[selectedCategory][i];
 					option.value = subCategories[selectedCategory][i];
 					subcategoryDropdown.appendChild(option);
 				}
-
+                //if Category!=Overall,generate metric list-->metricList1 = ["Calories", "Sets", "Reps", "Weight", "Minutes", "Distance"];
 				for (let i = 0; i < metricList1.length; i++) {
 					let option = document.createElement("option");
 					option.text = metricList1[i];
@@ -284,7 +252,7 @@
 					metricDropdown.appendChild(option);
 				}
 			} else if (selectedCategory == "overall") {
-				//subcategoryDropdown.disabled = true;
+			    //if Category==Overall,generate metric list-->let metricList2 = ["Calories", "Duration", "BodyWeight", "Sets", "Reps", "Weight", "Minutes", "Distance"];
 				for (let i = 0; i < metricList2.length; i++) {
 					let option = document.createElement("option");
 					option.text = metricList2[i];
@@ -293,37 +261,22 @@
 					} else {
 						option.value = metricList2[i].toLocaleLowerCase();
 					}
-
 					metricDropdown.appendChild(option);
 				}
 			}
 		});
 
 		$('#generateGraphButton').on('click', function () {
-			console.log("Inside generate graph click event");
 			let category = $('#category').val();
-			console.log("Category is " + category);
 			let subCategory = $('#sub-category').val();
-			console.log("Sub-category is" + subCategory);
 			let metric = $('#metric').val();
-			console.log("Metric is " + metric);
 			let timeframe = $('#timeframe').val();
-			console.log("Timeframe is " + timeframe);
 			$.ajax({
 				url: 'data',
 				data: {category: category, subCategory: subCategory, metric: metric, timeframe: timeframe},
 				dataType: "json",
 				success: function (response) {
-					console.log("Inside response from controller");
 					generateGraph(response, category, subCategory, metric, timeframe);
-					/*
-					if (timeframe <= 30) {
-						generateGraphBelowOneMonth(response, category, subCategory, metric, timeframe);
-					} else {
-						generateGraphAboveOneMonth(response, category, subCategory, metric, timeframe);
-					}
-					*/
-
 				},
 
 				error: function (xhr, status, error) {
@@ -332,80 +285,31 @@
 				}
 			}
 			);
-		});
+		});//end of ajax call to controller when clicked on "Generate Graph button"
 
 		function generateGraph(responseMap, category, subCategory, metric, timeframe) {
-			//let minRange = Number.MAX_SAFE_INTEGER, maxRange = Number.MIn_SAFE_INTEGER;
-
-			/*let startDate = new Date();
-
-			startDate.setDate(startDate.getDate() - timeframe);
-			console.log(startDate);
-			let startMonth = 0, startDay = 0;
-			if (startDate.getMonth() < 10) {
-				startMonth = '0' + (startDate.getMonth() + 1);
-			} else {
-				startMonth = startDate.getMonth() + 1;
-			}
-			if (startDate.getDate() < 10) {
-				startDay = '0' + startDate.getDate();
-			} else {
-				startDay = startDate.getDate();
-			}
-			let firstString = startDate.getFullYear() + "-" + startMonth + "-" + startDay;
-			console.log(startDate.getFullYear() + "-" + startMonth + "-" + startDay);
-
-			if (responseMap[firstString] == null) {
-				responseMap[firstString] = 0;
-			}
-			let endDate = new Date();
-			let endMonth = 0, endDay = 0;
-
-			if (endDate.getMonth() < 10) {
-				endMonth = '0' + (endDate.getMonth() + 1);
-			} else {
-				endMonth = endDate.getMonth() + 1;
-			}
-			if (endDate.getDate() < 10) {
-				endDay = '0' + endDate.getDate();
-			} else {
-				endDay = endDate.getDate();
-			}
-			let secondString = endDate.getFullYear() + "-" + endMonth + "-" + endDay;
-			console.log(endDate.getFullYear() + "-" + endMonth + "-" + endDay);
-
-			if (responseMap[secondString] == null) {
-				responseMap[secondString] = 0;
-			}
-			*/
-
+			/* data will be ordered as below:
+		         	2023-08-28: "630"
+                    2023-08-29: "470"
+                    2023-08-30: "103"
+                    console.log(orderedData)
+            */ 
 			let orderedData = Object.keys(responseMap).sort().reduce((accumulator, currrentValue) => {
 				accumulator[currrentValue] = responseMap[currrentValue];
 				return accumulator;
 			}, {});
-			console.log(orderedData);
-
+			
 			let data = [];
+			/* the x and y co-ordinates for graph to be plotted will be calculated below.
+			   Values can be checked using console.log(data);
+			*/
 			Object.keys(orderedData).forEach(function (key) {
 				let obj = {};
 				obj.x = new Date(key).getTime();
 				obj.y = parseInt(orderedData[key]);
-				/*
-				if (obj.y < minRange) {
-					minRange = obj.y;
-				}
-				if (obj.y > maxRange) {
-					maxRange = obj.y;
-				}*/
 				data.push(obj);
-
 			});
-			console.log(data);
-
-
-			console.log("Inside highchart function");
-
-
+			
 			Highcharts.chart('graphContainer', {
 				chart: {
 					type: 'line',
@@ -418,14 +322,16 @@
 					text: 'Progress Graph'
 				},
 				subtitle: {
-					text: category
+					text: category,
+					style:{
+							fontWeight: 'bold',
+							fontSize:'15px'
+						}
 				},
 				xAxis: {
 					type: 'datetime',
-					/*tickInterval: 30.44 * 24 * 3600 * 1000,//per month
-					tickInterval: 24 * 3600 * 1000, // one day*/
 					dateTimeLabelFormats: {
-						day: '%e %b %Y' // Displays as "Day Month"
+						day: '%e %b %Y' 
 					}
 
 				},
@@ -466,7 +372,7 @@
 						enabled: true,
 						radius: 3, // Controls the size of the dots
 						symbol: 'circle',
-						color: 'black' // Sets the shape of the dots
+						color: 'blue'
 					}
 			
     
@@ -482,155 +388,10 @@
 					}
 				}
 
-			});
+			});//end of Highcharts function
 
-		}
-
-
-		function generateGraphAboveOneMonth(responseMap, category, subCategory, metric, timeframe) {
-			//let minRange = Number.MAX_SAFE_INTEGER, maxRange = Number.MIn_SAFE_INTEGER;
-
-			/*
-						let startDate = new Date();
+		}//end of generateGraph function
 			
-						startDate.setDate(startDate.getDate() - timeframe);
-						console.log(startDate);
-						let startMonth = 0, startDay = 0;
-						if (startDate.getMonth() < 10) {
-							startMonth = '0' + (startDate.getMonth() + 1);
-						} else {
-							startMonth = startDate.getMonth() + 1;
-						}
-						if (startDate.getDate() < 10) {
-							startDay = '0' + startDate.getDate();
-						} else {
-							startDay = startDate.getDate();
-						}
-						let firstString = startDate.getFullYear() + "-" + startMonth + "-" + startDay;
-						console.log(startDate.getFullYear() + "-" + startMonth + "-" + startDay);
-			
-						if (responseMap[firstString] == null) {
-							responseMap[firstString] = 0;
-						}
-						let endDate = new Date();
-						let endMonth = 0, endDay = 0;
-			
-						if (endDate.getMonth() < 10) {
-							endMonth = '0' + (endDate.getMonth() + 1);
-						} else {
-							endMonth = endDate.getMonth() + 1;
-						}
-						if (endDate.getDate() < 10) {
-							endDay = '0' + endDate.getDate();
-						} else {
-							endDay = endDate.getDate();
-						}
-						let secondString = endDate.getFullYear() + "-" + endMonth + "-" + endDay;
-						console.log(endDate.getFullYear() + "-" + endMonth + "-" + endDay);
-			
-						if (responseMap[secondString] == null) {
-							responseMap[secondString] = 0;
-						}
-						*/
-			let orderedData = Object.keys(responseMap).sort().reduce((accumulator, currrentValue) => {
-				console.log(currrentValue);
-				accumulator[currrentValue] = responseMap[currrentValue];
-				return accumulator;
-			}, {});
-			console.log(orderedData);
-
-			let data = [];
-			Object.keys(orderedData).forEach(function (key) {
-				let obj = {};
-				obj.x = new Date(key).getTime();
-				obj.y = parseInt(orderedData[key]);
-				/*
-				if (obj.y < minRange) {
-					minRange = obj.y;
-				}
-				if (obj.y > maxRange) {
-					maxRange = obj.y;
-				}
-				*/
-				data.push(obj);
-
-			});
-
-
-
-
-			console.log(data);
-
-
-			console.log("Inside highchart function");
-
-
-			Highcharts.chart('graphContainer', {
-				chart: {
-					type: 'line',
-					zoomType: 'xy'
-				},
-				credits: {
-					enabled: false
-				},
-				title: {
-					text: 'Progress Graph'
-				},
-				subtitle: {
-					text: category
-				},
-				xAxis: {
-					type: 'datetime',
-					/*tickInterval: 30.44 * 24 * 3600 * 1000,
-					minorTickInterval:24 * 3600 * 1000,*/
-					dateTimeLabelFormats: {
-						day: '%e %b %Y' // Displays as "Month Year"
-					}
-
-				},
-				yAxis: {
-					min: 0,
-					//max: maxRange,
-					title: {
-						text: metric
-					}
-				},
-				tooltip: {
-					borderColor: '#fe7250',
-					borderRadius: 20,
-					headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
-					pointFormat: '<tr><td style="color:{series.color};padding:0">' + metric + ': </td>' +
-						'<td style="padding:0;font-size:10px;"><b>{point.y}</b></td></tr>',
-					footerFormat: '</table>',
-					shared: true,
-					useHTML: true
-				},
-				plotOptions: {
-					column: {
-						pointPadding: 0.2,
-						borderWidth: 0,
-						color: '#fe7250'
-					}
-				},
-				series: [{
-					name: 'Timeframe',
-					data: data,
-					marker: {
-						enabled: true,
-						radius: 3, // Controls the size of the dots
-						symbol: 'circle',
-						color: 'black' // Sets the shape of the dots
-					}
-				}]
-
-			});
-
-		}
-
 	</script>
-
-
 </body>
-
-
 </html>

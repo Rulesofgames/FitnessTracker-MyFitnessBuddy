@@ -57,9 +57,10 @@ public class UserController {
 
 	@PostMapping("registerUser")
 	public String registerUser(@ModelAttribute("user") User user, ModelMap modelmap) {
-		LOGGER.info("date is" + user.getDOB());
+		LOGGER.info("Inside registerUser()");
 		User savedUser = userRepo.save(user);
 		if (savedUser == null) {
+			LOGGER.info("User registration failed"+savedUser);
 			modelmap.addAttribute("msg", "User registration failed.Please try again");
 			return "displaySignUpPage";
 		} else {
@@ -68,39 +69,42 @@ public class UserController {
 				emailUtil.sendEmail(user.getEmail(), "Start your fitness journey",
 						user.getFirstName() + ", Welcome to MYFITNESSBUDYY");
 			} catch (Exception e) {
-				LOGGER.info("Email could be sent");
+				LOGGER.info("Email succesfully sent to first time registering user,Email sent to: "+user.getEmail());
 			}
-			LOGGER.info("user saved successfully");
+			LOGGER.info("User saved successfully"+savedUser);
 			return "displaySignUpPage";
 		}
 	}
 
 	@GetMapping("checkEmail")
 	public @ResponseBody Map<String, Boolean> checkEmailExists(@RequestParam("email") String email) {
-		LOGGER.info("Inside checkEmailExists" + email);
+		LOGGER.info("Inside checkEmailExists()" + email);
 		boolean exists = userRepo.existsByEmail(email);
-		LOGGER.info("Does email id exists?" + exists);
+		LOGGER.info("Does email id already exists(True or False)?" + exists);
 		Map<String, Boolean> response = new HashMap<>();
 		response.put("exists", exists);
 		return response;
 	}
 
 	@GetMapping("validatePassword")
-	public @ResponseBody Map<String, String> validatePassword(@RequestParam("password") String password) {
-
+	public @ResponseBody Map<String, String> validatePassword(@RequestParam("password") String password) { 
+		LOGGER.info("Inside validatePassword()");
+		LOGGER.info("Password to be validated is: "+password);
 		return fitnessTrackerServiceImpl.checkPassword(password);
-
 	}
 
 	@PostMapping("checklogIn")
 	public String checkLogIn(@RequestParam("email") String email, @RequestParam("password") String password,
 			HttpSession session, ModelMap modelmap) {
+		LOGGER.info("Inside CheckLogIn()");
 		User user = userRepo.findByEmail(email);
 		if (user == null || !user.getPassword().equals(password)) {
+			LOGGER.info("LogIn Failure,Email is : "+email);
 			modelmap.addAttribute("msg",
 					"Username or password is incorrect.Please enter correct username and password");
 			return "displaySignInPage";
 		} else {
+			LOGGER.info("LogIn Sucessfull,Logged in user email is :"+email);
 			session.setAttribute("userId", user.getId());
 			return "redirect:displayHomePage";
 		}
@@ -109,12 +113,12 @@ public class UserController {
 	@GetMapping("editProfileEmail")
 	public @ResponseBody Map<String, Boolean> checkEmailExistsEditProfile(@RequestParam("email") String email,
 			HttpSession session) {
-		LOGGER.info("Inside checkEmailExistsEditProfile" + email);
+		LOGGER.info("Inside checkEmailExistsEditProfile()" + email);
 		int userId = (int) session.getAttribute("userId");
 		String loggedInUserEmail = userRepo.findById(userId).get().getEmail();
 		LOGGER.info("Loggedin user same?" + loggedInUserEmail + " " + (!(loggedInUserEmail.equals(email))));
 		boolean exists = userRepo.existsByEmail(email) && (!(loggedInUserEmail.equals(email)));
-		LOGGER.info("Does email id exists?" + exists);
+		LOGGER.info("Does email id already exists(True or False)?" + exists);
 		Map<String, Boolean> response = new HashMap<>();
 		response.put("exists", exists);
 		return response;
@@ -122,26 +126,15 @@ public class UserController {
 
 	@PostMapping("saveProfileInfo")
 	public String saveProfileInfo(@ModelAttribute("user") User user, ModelMap modelmap, HttpSession session) {
-
+		LOGGER.info("Inside saveProfileInfo()");
 		int userId = (int) session.getAttribute("userId");
 		user.setId(userId);
 		User savedUser = userRepo.save(user);
-		/*
-		 * User retreivedUser=userRepo.findById(userId).get();
-		 * 
-		 * retreivedUser.setEmail(user.getEmail());
-		 * retreivedUser.setPassword(user.getPassword());
-		 * retreivedUser.setFirstName(user.getFirstName());
-		 * retreivedUser.setLastName(user.getLastName());
-		 * retreivedUser.setAddress(user.getAddress());
-		 * retreivedUser.setDOB(user.getDOB());
-		 * retreivedUser.setPincode(user.getPincode());
-		 * retreivedUser.setCountry(user.getCountry());
-		 * retreivedUser.setGender(user.getGender()); userRepo.save(retreivedUser);
-		 */
 		if (savedUser == null) {
+			LOGGER.info("Error saving Profile information");
 			modelmap.addAttribute("msg", "There was an error saving changes to your profile.Please try again.");
 		} else {
+			LOGGER.info("Profile information was saved successfully");
 			modelmap.addAttribute("msg", "Your changes has been successfully saved.");
 		}
 		modelmap.addAttribute("user", savedUser);
@@ -150,15 +143,16 @@ public class UserController {
 
 	@GetMapping("displayProfileInfo")
 	public String displayProfileDeatils(HttpSession session, ModelMap modelmap) {
+		LOGGER.info("Inside displayProfileDeatils()");
 		int userId = (int) session.getAttribute("userId");
 		User user = userRepo.findById(userId).get();
+		LOGGER.info("Display profile information of user:"+user);
 		modelmap.addAttribute("user", user);
 		return "displayProfileInfo";
 	}
 
 	@RequestMapping("displayProfile")
 	public String displayProfile() {
-
 		return "redirect:displayProfileInfo";
 	}
 
