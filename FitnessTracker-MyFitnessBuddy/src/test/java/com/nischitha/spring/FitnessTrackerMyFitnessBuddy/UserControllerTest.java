@@ -217,7 +217,7 @@ class UserControllerTest {
 	@Test
 	@Order(12)
 	public void saveProfileInfoTest_Success() {
-		User user=new User();
+		User user = new User();
 		User savedUser = new User();
 		int userId = 1;
 		when(session.getAttribute("userId")).thenReturn(1);
@@ -226,14 +226,15 @@ class UserControllerTest {
 		verify(userRepo, times(1)).save(user);
 		verify(session, times(1)).getAttribute("userId");
 		verify(modelMap, times(1)).addAttribute("msg", "Your changes has been successfully saved.");
-		verify(modelMap, never()).addAttribute("msg","There was an error saving changes to your profile.Please try again.");
-		verify(modelMap,times(1)).addAttribute("user",savedUser);
+		verify(modelMap, never()).addAttribute("msg",
+				"There was an error saving changes to your profile.Please try again.");
+		verify(modelMap, times(1)).addAttribute("user", savedUser);
 		assertNotNull(result);
 		assertEquals(result, "displayProfileInfo");
 	}
-	
-     @Test
-     @Order(13)
+
+	@Test
+	@Order(13)
 	public void saveProfileInfoTest_Failure() {
 		User saveUser = new User();
 		doReturn(1).when(session).getAttribute("userId");
@@ -241,7 +242,8 @@ class UserControllerTest {
 		String result = userController.saveProfileInfo(saveUser, modelMap, session);
 		verify(userRepo, times(1)).save(any(User.class));
 		verify(session, times(1)).getAttribute(anyString());
-		verify(modelMap, times(1)).addAttribute("msg","There was an error saving changes to your profile.Please try again.");
+		verify(modelMap, times(1)).addAttribute("msg",
+				"There was an error saving changes to your profile.Please try again.");
 		verify(modelMap, never()).addAttribute("msg", "Your changes has been successfully saved.");
 		assertEquals(result, "displayProfileInfo");
 	}

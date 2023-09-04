@@ -1,4 +1,5 @@
 <html xmlns:th="https://www.thymeleaf.org/">
+
 <head>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
 	<meta charset="UTF-8" />
@@ -81,7 +82,7 @@
 								Object.keys(exerciseCount).forEach(function (exerciseName) {
 									let exerciseSetDiv = $("<div>").addClass("each-workout__overview__exercise-List__sets");
 									let exerciseSetHoverDiv = $("<div>").addClass("each-workout__overview__exercise-List__set__hover");
-										//Counter to keep track of sets of each exercise
+									//Counter to keep track of sets of each exercise
 									let setCount = 1;
 									exerciseSetList[exerciseName].forEach(function (set) {
 										let setDiv = $("<div>").addClass("eachset-hover").text(exerciseName + " Set" + setCount + "  Weight:" + set.weight + "  Reps:" + set.reps + "  Mins:" + set.minutes + "  Distance:" + set.distance + "  Kcal:" + set.kcal);
@@ -135,12 +136,14 @@
 			justify-content: space-around;
 			z-index: 99;
 		}
+
 		#first-header-block {
 			display: flex;
 			height: 50px;
 			background-color: rgb(17, 15, 15);
 			border-bottom: 1px solid #dddddd;
 		}
+
 		#navigation-block {
 			display: flex;
 			justify-content: space-between;
@@ -150,12 +153,14 @@
 			vertical-align: middle;
 			margin-right: 20px;
 		}
+
 		#navigation-block a {
 			text-decoration: none;
 			letter-spacing: 0.5px;
 			line-height: 1px;
 			color: white;
 		}
+
 		#logo-block {
 			color: white;
 			font-family: 'Oswald', sans-serif;
@@ -169,6 +174,7 @@
 			padding-left: 20px;
 			width: 45%;
 		}
+
 		.summary-header {
 			display: flex;
 			justify-content: space-between;
@@ -178,25 +184,31 @@
 			height: 100px;
 			background-color: white;
 		}
+
 		.summary-header p {
 			font-size: 32px;
 			font-weight: 250;
 		}
+
 		.main-block {
 			margin-top: 152px;
 		}
+
 		.no-data-workout-summary {
 			text-align: center;
 		}
+
 		.no-data-css {
 			font-size: 25px;
 			font-weight: bold;
 		}
+
 		.data-workout-summary {
 			margin: 10px auto;
 			width: 75%;
 			border: 1px solid black;
 		}
+
 		.month-header {
 			display: flex;
 			justify-content: space-between;
@@ -209,52 +221,67 @@
 			padding-left: 25px;
 			padding-right: 25px;
 		}
+
 		.each-workout {
 			display: flex;
-			justify-content:space-between;
+			justify-content: space-between;
 			border-bottom: 1px solid #dddddd;
 			padding-left: 25px;
 			padding-right: 25px;
 		}
+
 		.month-workout-list {
 			display: flex;
 			flex-direction: column;
 		}
+
 		.each-workout__dayDate {
-			/*flex-basis: 90px;*/
+			flex-basis: 90px;
 			display: flex;
 			flex-direction: column;
 		}
+
 		.each-workout__dayDate__day {
 			color: darkgray;
 		}
+
 		.each-workout__dayDate__date {
 			font-weight: 500;
 		}
+
 		.each-workout__overview {
-			/*flex-basis: 180px;*/
+			flex-basis: 180px;
 			display: flex;
 			flex-direction: column;
-			justify-content:left;
+			justify-content: left;
 		}
+
 		.each-workout__overview__workout-type {
 			font-size: 22px;
 			font-weight: 500;
 		}
+
 		.each-workout__overview__exercise-List {
 			display: flex;
 			flex-direction: column;
 			font-style: italic;
 			font-weight: 400;
 		}
+
 		.each-workout__overview__exercise-List__sets {
 			position: relative;
 			cursor: pointer;
 			transition: all 0.5s;
 		}
+
+		.each-workout__duration {
+			flex-basis: 50px;
+		}
+
 		.eachset-hover {
 			font-size: 14px;
 		}
+
 		.each-workout__overview__exercise-List__set__hover {
 			position: absolute;
 			top: 0;
@@ -271,6 +298,7 @@
 			color: #000;
 			z-index: 1;
 		}
+
 		.each-workout__overview__exercise-List__set__hover:before {
 			position: absolute;
 			content: "";
@@ -281,6 +309,7 @@
 			left: 0px;
 			transform: translateX(-50%) rotate(45deg);
 		}
+
 		.each-workout__overview__exercise-List__sets:hover .each-workout__overview__exercise-List__set__hover {
 			visibility: visible;
 			opacity: 1;
@@ -309,4 +338,5 @@
 		</div>
 	</div>
 </body>
+
 </html>

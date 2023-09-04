@@ -37,27 +37,29 @@ class StatisticsControllerTest {
 
 	@Mock
 	private HttpSession session;
-	
+
 	@Mock
 	private ModelMap modelMap;
-	
+
 	@InjectMocks
 	private StatisticsController statisticsController;
-	
+
 	@Test
 	@Order(1)
 	void getDataTest() {
 		int userId = 1;
-		Map<String,String> mockedMap=new HashMap<>();
+		Map<String, String> mockedMap = new HashMap<>();
 		mockedMap.put("category_1", "data_1");
 		mockedMap.put("category_2", "data_2");
 		when(session.getAttribute("userId")).thenReturn(userId);
-		when(fitnessTrackerServiceImpl.generateGraphData("category","subCategory","metric",30,1)).thenReturn(mockedMap);
-		Map<String,String> result=statisticsController.getData(modelMap,"category","subCategory","metric",30,session);
-		verify(session,times(1)).getAttribute("userId");
+		when(fitnessTrackerServiceImpl.generateGraphData("category", "subCategory", "metric", 30, 1))
+				.thenReturn(mockedMap);
+		Map<String, String> result = statisticsController.getData(modelMap, "category", "subCategory", "metric", 30,
+				session);
+		verify(session, times(1)).getAttribute("userId");
 		assertNotNull(result);
-		assertEquals(2,result.size());
-		
+		assertEquals(2, result.size());
+
 	}
 
 }

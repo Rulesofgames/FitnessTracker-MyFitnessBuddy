@@ -7,6 +7,7 @@ import com.nischitha.spring.FitnessTrackerMyFitnessBuddy.entities.User;
 public interface UserRepository extends JpaRepository<User, Integer> {
 
 	boolean existsByEmail(String email);
+
 	User findByEmail(String email);
 
 }

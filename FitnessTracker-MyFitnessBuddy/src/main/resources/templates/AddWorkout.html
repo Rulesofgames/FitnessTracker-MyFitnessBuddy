@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="https://www.thymeleaf.org/">
+
 <head>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
 	<meta charset="UTF-8" />
@@ -15,6 +16,7 @@
 			box-sizing: border-box;
 			font-family: 'Oswald', sans-serif;
 		}
+
 		#header-block {
 			position: fixed;
 			top: 0;
@@ -26,12 +28,14 @@
 			justify-content: space-around;
 			z-index: 99;
 		}
+
 		#first-header-block {
 			display: flex;
 			height: 50px;
 			background-color: rgb(17, 15, 15);
 			border-bottom: 1px solid #dddddd;
 		}
+
 		#navigation-block {
 			display: flex;
 			justify-content: space-between;
@@ -41,12 +45,14 @@
 			vertical-align: middle;
 			margin-right: 20px;
 		}
+
 		#navigation-block a {
 			text-decoration: none;
 			letter-spacing: 0.5px;
 			line-height: 1px;
 			color: white;
 		}
+
 		#logo-block {
 			color: white;
 			font-family: 'Oswald', sans-serif;
@@ -60,6 +66,7 @@
 			padding-left: 20px;
 			width: 45%;
 		}
+
 		.add-workout-header {
 			display: flex;
 			justify-content: space-between;
@@ -69,10 +76,12 @@
 			height: 100px;
 			background-color: white;
 		}
+
 		.add-workout-header p {
 			font-size: 32px;
 			font-weight: 250;
 		}
+
 		#add-workout-btn {
 			margin-right: 25px;
 			font-size: 14px;
@@ -83,6 +92,7 @@
 			color: #fe7250;
 			background-color: #fff;
 		}
+
 		#whole-workout-modal-window,
 		#whole-exercise-modal-window,
 		#whole-editWorkout-modal-window,
@@ -96,6 +106,7 @@
 			background-color: rgba(0, 0, 0, 0.8);
 			z-index: 100;
 		}
+
 		.add-workout-modal,
 		.edit-workout-modal {
 			margin: 150px auto;
@@ -108,6 +119,7 @@
 			animation-name: modalSlideUp;
 			animation-duration: 1s;
 		}
+
 		.delete-workout-modal {
 			margin: 260px auto;
 			width: 30%;
@@ -119,32 +131,38 @@
 			animation-name: modalSlideUp;
 			animation-duration: 1s;
 		}
+
 		#delete-workout__form__confirmMessage {
 			text-align: center;
 		}
+
 		.modal-header {
 			background: white;
 			text-align: center;
 			padding: 5px 5px;
 			height: 17%;
 		}
+
 		.modal-header h2 {
 			color: #fe7250;
 			font-size: 30px;
 			font-weight: 700;
 		}
+
 		#delete-workout-modal__formbox {
 			padding-top: 40px;
 		}
+
 		#close-workout-modal,
 		#close-deleteworkout-modal,
 		#close-editworkout-modal {
 			float: right;
 			color: #a9a5bf;
-			padding-right:2px;
-			margin-bottom:3px;
-			
+			padding-right: 2px;
+			margin-bottom: 3px;
+
 		}
+
 		#close-exercise-modal:hover,
 		#close-workout-modal:hover,
 		#close-deleteworkout-modal:hover,
@@ -152,6 +170,7 @@
 			cursor: pointer;
 			color: #333;
 		}
+
 		.input-field {
 			margin: 5px 0;
 			border-radius: 3px;
@@ -165,18 +184,22 @@
 			display: flex;
 			justify-content: space-between;
 		}
+
 		.input-field label {
 			padding-left: 60px;
 			margin-left: 55px;
 		}
+
 		.input-field input {
 			padding-left: -30px;
 			margin-left: -10px;
 			width: 30%;
 		}
+
 		#input-field-textarea {
 			height: 43px;
 		}
+
 		#add-workout-modal__formbox__warning,
 		#edit-workout-modal__formbox__warning {
 			width: max-content;
@@ -184,10 +207,12 @@
 			margin: 0 auto;
 			color: #e42525;
 		}
+
 		.buttnGrp {
 			margin: 11px auto;
 			text-align: Center;
 		}
+
 		.buttnGrp input[type=submit],
 		#cancel-deleteworkout-btn {
 			background: #fe7250;
@@ -204,19 +229,23 @@
 			margin: 10px auto;
 			transition: all ease-in-out 1s;
 		}
+
 		.table-section {
 			width: 100%;
 			margin-top: 148px;
 		}
+
 		table {
 			display: table;
 			width: 100%;
 			table-layout: fixed;
 			border-collapse: collapse;
 		}
+
 		thead {
 			background-color: #fe7250;
 		}
+
 		thead th {
 			position: sticky;
 			top: 148px;
@@ -224,6 +253,7 @@
 			background-color: #f6f9fc;
 			font-size: 15px;
 		}
+
 		th,
 		td {
 			border-bottom: 1px solid #dddddd;
@@ -231,15 +261,18 @@
 			word-break: break-all;
 			text-align: center;
 		}
+
 		tr {
 			width: 100%;
 			height: 60px;
 		}
+
 		tbody tr:hover {
 			color: #fe7250;
 			cursor: pointer;
 			background-color: #f6f9fc;
 		}
+
 		button {
 			outline: none;
 			border: none;
@@ -248,22 +281,59 @@
 			padding: 5px;
 			color: #ffffff;
 		}
+
 		.edit-workout-button {
 			background-color: #0298cf;
 		}
+
 		.delete-workout-button {
 			background-color: #dc3545;
 		}
+
 		.view-workoutLog-button {
 			background-color: rgb(52, 160, 103);
 		}
+
 		td button {
 			margin-left: 4px;
 			margin-right: 4px;
 		}
+
+		#pagination {
+			display: flex;
+			align-items: center;
+			vertical-align: middle;
+			justify-content: center;
+			margin: 10px;
+		}
+
+		.NavigationBtn {
+			background-image: linear-gradient(to right, #EC6F66 0%, #F3A183 51%, #EC6F66 100%);
+			height: 40px;
+			width: 110px;
+			margin: 5px;
+			padding: 5px 5px;
+			text-align: center;
+			text-decoration: none;
+			transition: 0.5s;
+			background-size: 200% auto;
+			color: white;
+			box-shadow: 0 0 20px #eee;
+			border-radius: 20px;
+			display: block;
+		}
+
+		.NavigationBtn:hover {
+			background-position: right center;
+			/* change the direction of the change here */
+			color: #fff;
+			text-decoration: none;
+		}
+
 		.fas {
 			font-weight: 900;
 		}
+
 		.icon-box {
 			position: relative;
 			cursor: pointer;
@@ -271,6 +341,7 @@
 			display: inline-block;
 			padding: 5px 3px;
 		}
+
 		.icon-box__hovercontent {
 			position: absolute;
 			top: 100%;
@@ -287,6 +358,7 @@
 			color: #000;
 			z-index: 1;
 		}
+
 		.icon-box__hovercontent:before {
 			position: absolute;
 			content: "";
@@ -297,23 +369,28 @@
 			left: 45%;
 			transform: translateX(50%) rotate(45deg);
 		}
+
 		.icon-box__hovercontent p {
 			margin: 0;
 		}
+
 		.icon-box:hover .icon-box__hovercontent {
 			visibility: visible;
 			opacity: 1;
 		}
+
 		@keyframes modalSlideUp {
 			0% {
 				transform: translateY(1500px);
 			}
+
 			100% {
 				transform: translateY(0px);
 			}
 		}
 	</style>
 </head>
+
 <body>
 	<div id="header-block">
 		<div id="first-header-block">
@@ -361,7 +438,8 @@
 
 						<div class="input-field">
 							<label for="bodyWeight">BodyWeight:</label>
-							<input type="number" id="add-workout-bodyWeight" name="bodyWeight" min="1" max="1000" required>
+							<input type="number" id="add-workout-bodyWeight" name="bodyWeight" min="1" max="1000"
+								required>
 						</div>
 
 						<div class="input-field" id="input-field-textarea">
@@ -379,7 +457,7 @@
 
 			</div>
 		</div>
-		
+
 		<!--edit workout-->
 		<div id="whole-editWorkout-modal-window">
 			<div class="edit-workout-modal">
@@ -406,7 +484,8 @@
 
 						<div class="input-field">
 							<label for="bodyWeight">BodyWeight:</label>
-							<input type="number" id="edit-workout-bodyWeight" name="bodyWeight" min="1" max="1000" required>
+							<input type="number" id="edit-workout-bodyWeight" name="bodyWeight" min="1" max="1000"
+								required>
 						</div>
 
 						<div class="input-field" id="input-field-textarea">
@@ -499,6 +578,15 @@
 				</tbody>
 			</table>
 		</div>
+		<div id="pagination">
+			<div th:if="${workoutList.hasPrevious}">
+				<a th:href="@{'addWorkout?page='+${workoutList.number-1}}" class="NavigationBtn">&laquo; Previous</a>
+			</div>
+			<div th:if="${workoutList.hasNext}">
+				<a th:href="@{'addWorkout?page='+${workoutList.number+1}}" class="NavigationBtn">Next &raquo;</a>
+			</div>
+		</div>
+
 	</div>
 	<script>
 		//Adding workout
@@ -516,10 +604,10 @@
 		});
 		//The toISOString() method returns the date in following format - 2023-08-31T10:05:01.874Z,the substr() returns 2023-08-31
 		let today = new Date().toISOString().substr(0, 10);
-		
+
 		// Set the max attribute of the date input field to today's date
 		document.getElementById("add-workout-date").setAttribute("max", today);
-	
+
 		let addWorkoutStartTimeInput = document.getElementById('add-workout-startTime');
 		let addWorkoutEndTimeInput = document.getElementById('add-workout-endTime');
 		let addWorkoutTimeWarningMessage = document.getElementById("add-workout-modal__formbox__warning");
@@ -551,7 +639,7 @@
 			//Add an event listener to the "Edit" icon of each Workout 
 			button.addEventListener("click", function () {
 				editWorkoutModal.style.display = "block";
-				
+
 				let workoutId = button.getAttribute("data-workout-id");
 				let workoutInputId = document.getElementById("edit-workout-id");
 				workoutInputId.value = Number(workoutId);
@@ -583,12 +671,12 @@
 			});
 
 		});
-        //clicking on the "x" icon in "Edit Workout" modal window should close the Edit Workout modal window
+		//clicking on the "x" icon in "Edit Workout" modal window should close the Edit Workout modal window
 		closeEditWorkoutModal.addEventListener("click", function () {
 			editWorkoutModal.style.display = 'none';
 
 		});
-		 
+
 		// Set the max attribute of the date input field to today's date
 		document.getElementById("edit-workout-date").setAttribute("max", today);
 		let editWorkoutStartTimeInput = document.getElementById('edit-workout-startTime');
@@ -636,10 +724,10 @@
 			deleteWorkoutModal.style.display = 'none';
 		});
 
-        /*Add event listener to close the "Add workout","Edit workout" and "Delete Workout" modal windows
-         if user clicks on screen apart from the respective modal window */
+		/*Add event listener to close the "Add workout","Edit workout" and "Delete Workout" modal windows
+		 if user clicks on screen apart from the respective modal window */
 		window.addEventListener("click", function (e) {
-           if (e.target == workoutModal) {
+			if (e.target == workoutModal) {
 				workoutModal.style.display = 'none';
 			} else if (e.target == editWorkoutModal) {
 				editWorkoutModal.style.display = 'none';
@@ -649,4 +737,5 @@
 		});
 	</script>
 </body>
+
 </html>

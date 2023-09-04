@@ -22,13 +22,13 @@ import lombok.ToString;
 @Setter
 public class Exercise {
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	@Column(name="exercise_category")
+	@Column(name = "exercise_category")
 	private String exerciseCategory;
-	@Column(name="exercise_name")
+	@Column(name = "exercise_name")
 	private String exerciseName;
-	@OneToMany(mappedBy="exercise")
-	 @JsonBackReference
+	@OneToMany(mappedBy = "exercise")
+	@JsonBackReference
 	private Set<Sets> sets;
 }

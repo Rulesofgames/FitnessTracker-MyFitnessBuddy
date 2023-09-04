@@ -25,21 +25,21 @@ import lombok.ToString;
 @Setter
 public class User {
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	private String email;
 	private String password;
-	@Column(name="firstname")
+	@Column(name = "firstname")
 	private String firstName;
-	@Column(name="lastname")
+	@Column(name = "lastname")
 	private String lastName;
-	@Column(name="birthdate")
+	@Column(name = "birthdate")
 	private LocalDate DOB;
 	private String address;
 	private int pincode;
 	private String country;
 	private String gender;
-	@OneToMany(mappedBy="user")
+	@OneToMany(mappedBy = "user")
 	@JsonManagedReference
 	private Set<Workout> workout;
 }

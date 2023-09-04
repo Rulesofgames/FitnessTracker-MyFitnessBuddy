@@ -23,7 +23,7 @@ import com.nischitha.spring.FitnessTrackerMyFitnessBuddy.repos.WorkoutReopositor
 public class FitnessTrackerServiceImpl implements FitnessTrackerService {
 
 	private static final Logger LOGGER = LoggerFactory.getLogger(FitnessTrackerServiceImpl.class);
-	
+
 	@Autowired
 	UserRepository userRepo;
 
@@ -36,11 +36,11 @@ public class FitnessTrackerServiceImpl implements FitnessTrackerService {
 	@Override
 	public Map<String, String> checkPassword(String password) {
 		Map<String, String> response = new HashMap<>();
-		//Check to verify if password length is zero
-		 if(password.length()==0) {
-			 response.put("msg", "");
-			 return response;
-		 }
+		// Check to verify if password length is zero
+		if (password.length() == 0) {
+			response.put("msg", "");
+			return response;
+		}
 		boolean isUpperCase = false, isSpecialCharacter = false, isDigit = false, isLowerCase = false;
 		boolean passwordLengthOk = (password.length() >= 8) ? true : false;
 		for (char c : password.toCharArray()) {
@@ -54,7 +54,8 @@ public class FitnessTrackerServiceImpl implements FitnessTrackerService {
 				isSpecialCharacter = true;
 			}
 		}
-		//If criteria for Strong password is not met,send the below message back to user
+		// If criteria for Strong password is not met,send the below message back to
+		// user
 		if (!isUpperCase || !isSpecialCharacter || !isDigit || !passwordLengthOk || !isLowerCase) {
 			response.put("msg",
 					"Password should be atleast 8 characters,including 1 uppercase,1 lowercase,1 digit and 1 special character");
@@ -111,9 +112,9 @@ public class FitnessTrackerServiceImpl implements FitnessTrackerService {
 			} else if (metric.equals("reps") || metric.equals("weight") || metric.equals("minutes")
 					|| metric.equals("distance") || metric.equals("kcal")) {
 				list = workoutRepo.findTotal(metric, timeframe, userId);
-			} else if(metric.equals("bodyweight")) {
+			} else if (metric.equals("bodyweight")) {
 				list = workoutRepo.findBodyWeight(timeframe, userId);
-				
+
 			}
 		} else if (!category.equals("overall") && subCategory.equals("overall")) {
 			if (metric.equals("sets")) {
@@ -133,7 +134,7 @@ public class FitnessTrackerServiceImpl implements FitnessTrackerService {
 		LOGGER.info("Data to generate graph is :");
 		for (Object[] obj : list) {
 			map.put(obj[0].toString(), (obj[1]).toString());
-			LOGGER.info(""+obj[0].toString() + " " + (obj[1]).toString());
+			LOGGER.info("" + obj[0].toString() + " " + (obj[1]).toString());
 		}
 		return map;
 	}

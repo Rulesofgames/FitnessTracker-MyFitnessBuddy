@@ -38,13 +38,13 @@ public class Workout {
 	private int bodyWeight;
 	private String notes;
 	private int duration;
-	@Column(name="workouttype")
+	@Column(name = "workouttype")
 	private String workoutType;
 	@ManyToOne
-	@JoinColumn(name="user_id")
+	@JoinColumn(name = "user_id")
 	@JsonBackReference
 	private User user;
-	@OneToMany(mappedBy="workout",fetch=FetchType.EAGER,cascade=CascadeType.ALL)
+	@OneToMany(mappedBy = "workout", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	@JsonManagedReference
 	private Set<Sets> sets;
 }

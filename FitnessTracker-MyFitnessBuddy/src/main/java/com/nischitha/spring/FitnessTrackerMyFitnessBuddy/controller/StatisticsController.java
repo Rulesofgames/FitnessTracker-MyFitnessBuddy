@@ -7,7 +7,6 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,22 +31,25 @@ public class StatisticsController {
 
 	@Autowired
 	WorkoutReopository workoutRepo;
-	
+
 	@Autowired
 	FitnessTrackerServiceImpl fitnessTrackerServiceImpl;
 
-	@RequestMapping("statistics")
+	@GetMapping("statistics")
 	public String generateGraphs(ModelMap modelmap) {
 		LOGGER.info("Inside statistics controller");
 		return "displayGenerateGraphs";
 	}
-	
+
 	@GetMapping("data")
-	public  @ResponseBody  Map<String,String> getData(ModelMap modelmap,@RequestParam("category")String category,@RequestParam("subCategory")String subCategory,@RequestParam("metric")String metric,@RequestParam("timeframe")Integer timeframe,HttpSession session){
+	public @ResponseBody Map<String, String> getData(ModelMap modelmap, @RequestParam("category") String category,
+			@RequestParam("subCategory") String subCategory, @RequestParam("metric") String metric,
+			@RequestParam("timeframe") Integer timeframe, HttpSession session) {
 		LOGGER.info("Inside getData()");
-		LOGGER.info("Category is: "+category +" SubCategory is: "+subCategory+" Timeframe is: "+timeframe+" and Metric is: "+metric);
-		int userId=(int)session.getAttribute("userId");
-		return fitnessTrackerServiceImpl.generateGraphData(category,subCategory,metric, timeframe, userId);
+		LOGGER.info("Category is: " + category + " SubCategory is: " + subCategory + " Timeframe is: " + timeframe
+				+ " and Metric is: " + metric);
+		int userId = (int) session.getAttribute("userId");
+		return fitnessTrackerServiceImpl.generateGraphData(category, subCategory, metric, timeframe, userId);
 
 	}
 

@@ -1,4 +1,5 @@
 <html xmlns:th="https://www.thymeleaf.org/">
+
 <head>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
 	<meta charset="UTF-8" />
@@ -17,6 +18,7 @@
 			box-sizing: border-box;
 			font-family: 'Oswald', sans-serif;
 		}
+
 		#header-block {
 			position: fixed;
 			top: 0;
@@ -28,6 +30,7 @@
 			justify-content: space-around;
 			z-index: 99;
 		}
+
 		#first-header-block {
 			display: flex;
 			height: 50px;
@@ -35,6 +38,7 @@
 			background-color: rgb(17, 15, 15);
 			border-bottom: 1px solid #dddddd;
 		}
+
 		#navigation-block {
 			display: flex;
 			justify-content: space-between;
@@ -44,6 +48,7 @@
 			vertical-align: middle;
 			margin-right: 20px;
 		}
+
 		#navigation-block a {
 			text-decoration: none;
 			letter-spacing: 0.5px;
@@ -51,6 +56,7 @@
 			color: white;
 			font-size: 16px;
 		}
+
 		#logo-block {
 			color: white;
 			font-family: 'Oswald', sans-serif;
@@ -64,6 +70,7 @@
 			padding-left: 20px;
 			width: 45%;
 		}
+
 		.add-workout-header {
 			display: flex;
 			justify-content: space-between;
@@ -73,13 +80,16 @@
 			height: 100px;
 			background-color: white;
 		}
+
 		.add-workout-header p {
 			font-size: 32px;
 			font-weight: 250;
 		}
+
 		#mainBlock {
 			margin-top: 152px;
 		}
+
 		.select {
 			color: #333333;
 			background-color: #eeeeee;
@@ -91,31 +101,38 @@
 			letter-spacing: 0.5px;
 			width: 183px;
 		}
+
 		.select:focus,
 		.select:hover {
 			outline: none;
 			border: 1px solid #bbbbbb;
 		}
+
 		.select option {
 			font-size: 14px;
 		}
+
 		#dropdown-buttons {
 			text-align: center;
 			width: 100%;
 		}
+
 		.dropdwon {
 			display: inline-block;
 			margin: 0 10px;
 		}
+
 		label {
 			margin-right: 7px;
 			letter-spacing: 1px;
 			font-size: 16px;
 		}
+
 		#graphContainer {
 			margin: 40px auto;
 			width: 60%;
 		}
+
 		#generateGraphButton {
 			background: #fe7250;
 			color: #fff;
@@ -131,12 +148,14 @@
 			margin-left: 10px;
 			transition: all ease-in-out 1s;
 		}
+
 		#dropdown-buttons {
 			vertical-align: middle;
 			text-align: center;
 		}
 	</style>
 </head>
+
 <body>
 	<div id="header-block">
 		<div id="first-header-block">
@@ -232,14 +251,14 @@
 			metricDropdown.innerHTML = "";
 			// Populate the sub-category dropdown list with options for the selected category
 			if (selectedCategory !== "overall") {
-				
+
 				for (let i = 0; i < subCategories[selectedCategory].length; i++) {
 					let option = document.createElement("option");
 					option.text = subCategories[selectedCategory][i];
 					option.value = subCategories[selectedCategory][i];
 					subcategoryDropdown.appendChild(option);
 				}
-                //if Category!=Overall,generate metric list-->metricList1 = ["Calories", "Sets", "Reps", "Weight", "Minutes", "Distance"];
+				//if Category!=Overall,generate metric list-->metricList1 = ["Calories", "Sets", "Reps", "Weight", "Minutes", "Distance"];
 				for (let i = 0; i < metricList1.length; i++) {
 					let option = document.createElement("option");
 					option.text = metricList1[i];
@@ -252,7 +271,7 @@
 					metricDropdown.appendChild(option);
 				}
 			} else if (selectedCategory == "overall") {
-			    //if Category==Overall,generate metric list-->let metricList2 = ["Calories", "Duration", "BodyWeight", "Sets", "Reps", "Weight", "Minutes", "Distance"];
+				//if Category==Overall,generate metric list-->let metricList2 = ["Calories", "Duration", "BodyWeight", "Sets", "Reps", "Weight", "Minutes", "Distance"];
 				for (let i = 0; i < metricList2.length; i++) {
 					let option = document.createElement("option");
 					option.text = metricList2[i];
@@ -289,16 +308,16 @@
 
 		function generateGraph(responseMap, category, subCategory, metric, timeframe) {
 			/* data will be ordered as below:
-		         	2023-08-28: "630"
-                    2023-08-29: "470"
-                    2023-08-30: "103"
-                    console.log(orderedData)
-            */ 
+					  2023-08-28: "630"
+					2023-08-29: "470"
+					2023-08-30: "103"
+					console.log(orderedData)
+			*/
 			let orderedData = Object.keys(responseMap).sort().reduce((accumulator, currrentValue) => {
 				accumulator[currrentValue] = responseMap[currrentValue];
 				return accumulator;
 			}, {});
-			
+
 			let data = [];
 			/* the x and y co-ordinates for graph to be plotted will be calculated below.
 			   Values can be checked using console.log(data);
@@ -309,7 +328,9 @@
 				obj.y = parseInt(orderedData[key]);
 				data.push(obj);
 			});
-			
+			let metricTobePrintedOnGraph=metric.charAt(0).toUpperCase() + metric.slice(1);
+			let categoryTobePrintedOnGraph=category.charAt(0).toUpperCase()+category.slice(1);
+
 			Highcharts.chart('graphContainer', {
 				chart: {
 					type: 'line',
@@ -322,16 +343,16 @@
 					text: 'Progress Graph'
 				},
 				subtitle: {
-					text: category,
-					style:{
-							fontWeight: 'bold',
-							fontSize:'15px'
-						}
+					text: categoryTobePrintedOnGraph,
+					style: {
+						fontWeight: 'bold',
+						fontSize: '15px'
+					}
 				},
 				xAxis: {
 					type: 'datetime',
 					dateTimeLabelFormats: {
-						day: '%e %b %Y' 
+						day: '%e %b %Y'
 					}
 
 				},
@@ -339,18 +360,16 @@
 					min: 0,
 					//max: maxRange,
 					title: {
-						text: metric,
-						style:{
+						text: metricTobePrintedOnGraph,
+						style: {
 							fontWeight: 'bold',
-							fontSize:'20px'
+							fontSize: '20px'
 						}
 					}
 				},
 				tooltip: {
 					borderColor: '#fe7250',
 					borderRadius: 20,
-					/*The point.key variable contains the category name, x value or datetime string depending on the type of axis. 
-					For datetime axes, the point.key date format can be set using tooltip.xDateFormat.*/
 					headerFormat: '<span style="font-size:10px">{point.key}</span>',
 					pointFormat: '<br/><span style="color:{series.color};padding:0,font-size:10px;">' + metric + ': </span>' +
 						'<span style="padding:0;font-size:10px;"><b>{point.y}</b></span>',
@@ -366,7 +385,7 @@
 					}
 				},
 				series: [{
-					name:'<span style="font-size:20px;">Timeframe<span>',/*u can also specify styling of string using<span style="font-size:20px;">Timeframe</span>*/
+					name: '<span style="font-size:20px;">Timeframe<span>',
 					data: data,
 					marker: {
 						enabled: true,
@@ -374,8 +393,8 @@
 						symbol: 'circle',
 						color: 'blue'
 					}
-			
-    
+
+
 				}],
 				lang: {
 					noData: 'No Data'
@@ -391,7 +410,8 @@
 			});//end of Highcharts function
 
 		}//end of generateGraph function
-			
+
 	</script>
 </body>
+
 </html>

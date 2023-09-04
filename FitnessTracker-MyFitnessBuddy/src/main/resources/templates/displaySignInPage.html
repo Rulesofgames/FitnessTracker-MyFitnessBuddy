@@ -8,12 +8,12 @@
 	<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&display=swap" rel="stylesheet">
 	<title>Log In Page</title>
 	<script>
-		<!--Initially when the SignUp page loads the message-box should be empty since the user has not provided any input
-		.The div with id "message-box" displays message to user when invalid credentails are entered -->
-		setTimeout(function(){
-			let messageBox=document.getElementById("message-box");
-			messageBox.innerText="";
-		},4000);
+		/*Initially when the SignUp page loads the message-box should be empty since the user has not provided any input
+		.The div with id "message-box" displays message to user when invalid credentails are entered */
+		setTimeout(function () {
+			let messageBox = document.getElementById("message-box");
+			messageBox.innerText = "";
+		}, 3000);
 	</script>
 	<style>
 		* {
@@ -22,6 +22,7 @@
 			box-sizing: border-box;
 			font-family: 'Oswald', sans-serif;
 		}
+
 		#container {
 			position: relative;
 			width: 100%;
@@ -30,6 +31,7 @@
 			background-position: center;
 			background-size: cover;
 		}
+
 		#form-box {
 			position: absolute;
 			width: 90%;
@@ -41,6 +43,7 @@
 			text-align: center;
 			transform: translate(-50%, -50%);
 		}
+
 		#form-box h1 {
 			font-size: 30px;
 			color: #fe7250;
@@ -48,6 +51,7 @@
 			margin-bottom: 2px;
 			margin-top: -10px;
 		}
+
 		#underline-box {
 			height: 2px;
 			display: block;
@@ -56,6 +60,7 @@
 			padding: 0;
 			border: 2px solid #fe7250;
 		}
+
 		#input-field {
 			/*have colored the whole div[input-field box] light grey*/
 			background: #eaeaea;
@@ -67,6 +72,7 @@
 			overflow: hidden;
 			transition: all 0.8s;
 		}
+
 		input {
 			width: 100%;
 			/* can aslo give same color as input-field*/
@@ -75,37 +81,46 @@
 			outline: 0;
 			padding: 18px 15px;
 		}
+
 		#input-field i {
 			margin-left: 15px;
 			color: #999;
 		}
+
 		form p {
 			text-align: left;
 			font-size: 13px;
 		}
+
 		form a {
 			text-decoration: none;
 			color: #3c00a0;
 		}
+
 		form a:hover {
 			color: Red;
 		}
+
 		#forget-password {
 			margin-top: -2px;
 		}
+
 		#buttonGrp {
 			margin-top: 0px;
 		}
+
 		#message-box {
-			margin-top:8px;
-			color:orangered;
-			font-size:12px;
-			font-weight:bold;
-			height:14px;
+			margin-top: 8px;
+			color: orangered;
+			font-size: 12px;
+			font-weight: bold;
+			height: 14px;
 		}
-		#buttonGrp{
-			height:10%;
+
+		#buttonGrp {
+			height: 10%;
 		}
+
 		#signin-btn {
 			background: #fe7250;
 			color: #fff;
@@ -120,24 +135,33 @@
 			margin-top: 40px;
 			transition: all ease-in-out 1s;
 		}
-		#signin-btn :hover {
-			background: rgba(254, 114, 80, 0.2);
+
+		#signin-btn:hover{
+			background: rgba(254, 114, 80, 0.6);
 		}
+		#signin-btn:active{
+			box-shadow:0 0 4px 4px;
+		}
+
 		#sing-up-link {
 			margin: 8px auto;
 		}
+
 		#sing-up-link p {
 			font-weight: normal;
 			font-size: 14px;
 		}
+
 		#sing-up-link a {
 			text-decoration: none;
 		}
+
 		#sing-up-link a:hover {
 			color: #fe7250;
 		}
 	</style>
 </head>
+
 <body>
 	<div id="container">
 		<div id="form-box">
@@ -169,4 +193,5 @@
 		</div>
 	</div>
 </body>
+
 </html>

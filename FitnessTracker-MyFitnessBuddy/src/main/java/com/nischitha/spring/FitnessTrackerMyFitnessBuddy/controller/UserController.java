@@ -35,7 +35,6 @@ public class UserController {
 
 	@Autowired
 	EmailUtil emailUtil;
-	
 
 	@Autowired
 	FitnessTrackerService fitnessTrackerServiceImpl;
@@ -60,7 +59,7 @@ public class UserController {
 		LOGGER.info("Inside registerUser()");
 		User savedUser = userRepo.save(user);
 		if (savedUser == null) {
-			LOGGER.info("User registration failed"+savedUser);
+			LOGGER.info("User registration failed");
 			modelmap.addAttribute("msg", "User registration failed.Please try again");
 			return "displaySignUpPage";
 		} else {
@@ -69,9 +68,9 @@ public class UserController {
 				emailUtil.sendEmail(user.getEmail(), "Start your fitness journey",
 						user.getFirstName() + ", Welcome to MYFITNESSBUDYY");
 			} catch (Exception e) {
-				LOGGER.info("Email succesfully sent to first time registering user,Email sent to: "+user.getEmail());
+				LOGGER.info("Email succesfully sent to first time registering user,Email sent to: " + user.getEmail());
 			}
-			LOGGER.info("User saved successfully"+savedUser);
+			LOGGER.info("User saved successfully" + savedUser);
 			return "displaySignUpPage";
 		}
 	}
@@ -87,9 +86,9 @@ public class UserController {
 	}
 
 	@GetMapping("validatePassword")
-	public @ResponseBody Map<String, String> validatePassword(@RequestParam("password") String password) { 
+	public @ResponseBody Map<String, String> validatePassword(@RequestParam("password") String password) {
 		LOGGER.info("Inside validatePassword()");
-		LOGGER.info("Password to be validated is: "+password);
+		LOGGER.info("Password to be validated is: " + password);
 		return fitnessTrackerServiceImpl.checkPassword(password);
 	}
 
@@ -99,12 +98,12 @@ public class UserController {
 		LOGGER.info("Inside CheckLogIn()");
 		User user = userRepo.findByEmail(email);
 		if (user == null || !user.getPassword().equals(password)) {
-			LOGGER.info("LogIn Failure,Email is : "+email);
+			LOGGER.info("LogIn Failure,Email is : " + email);
 			modelmap.addAttribute("msg",
 					"Username or password is incorrect.Please enter correct username and password");
 			return "displaySignInPage";
 		} else {
-			LOGGER.info("LogIn Sucessfull,Logged in user email is :"+email);
+			LOGGER.info("LogIn Sucessfull,Logged in user email is :" + email);
 			session.setAttribute("userId", user.getId());
 			return "redirect:displayHomePage";
 		}
@@ -146,7 +145,7 @@ public class UserController {
 		LOGGER.info("Inside displayProfileDeatils()");
 		int userId = (int) session.getAttribute("userId");
 		User user = userRepo.findById(userId).get();
-		LOGGER.info("Display profile information of user:"+user);
+		LOGGER.info("Display profile information of user:" + user);
 		modelmap.addAttribute("user", user);
 		return "displayProfileInfo";
 	}

@@ -27,21 +27,21 @@ import lombok.ToString;
 @Setter
 public class Sets {
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	private int weight;
 	private int reps;
 	private int minutes;
 	private int distance;
-	@Column(name="kcal")
+	@Column(name = "kcal")
 	private int Kcal;
 	private String notes;
-	@ManyToOne(fetch=FetchType.LAZY)
-	@JoinColumn(name="workout_id")
-	 @JsonBackReference
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "workout_id")
+	@JsonBackReference
 	private Workout workout;
-	@ManyToOne(fetch=FetchType.EAGER)
-	@JoinColumn(name="exercise_id")
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "exercise_id")
 	@JsonManagedReference
 	private Exercise exercise;
 
