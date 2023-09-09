@@ -15,19 +15,19 @@ Database: MySQL
 
 User Registration - 
 1.New users can create an account by providing their email address and password.
-2. The registration form ensures that users enter valid email addresses and secure passwords.
+2.The registration form ensures that users enter valid email addresses and secure passwords.
 
 Email Verification - 
-1. Upon successful registration, a welcome email is automatically sent to the user's provided email address.
+1.Upon successful registration, a welcome email is automatically sent to the user's provided email address.
 2.This email serves as a confirmation of the registration process and welcomes the user to the platform.
 
 Password Criteria Validation - 
-1. During registration, the application checks whether the user's chosen password meets specified criteria, such as length and complexity.
-2. jQuery AJAX is employed to validate the password on the client side, ensuring immediate feedback to the user.
+During registration, the application checks whether the user's chosen password meets specified criteria, such as length and complexity.
+2.jQuery AJAX is employed to validate the password on the client side, ensuring immediate feedback to the user.
 
 Email Uniqueness Check - 
-1. To prevent multiple registrations with the same email address, the system uses jQuery AJAX to check if the entered email address is already associated with an existing account.
-2. Users are notified in real-time if they attempt to register with an email address that is already in use.
+To prevent multiple registrations with the same email address, the system uses jQuery AJAX to check if the entered email address is already associated with an existing account.
+2.Users are notified in real-time if they attempt to register with an email address that is already in use.
 
 Workout Tracking - 
 1. After logging in, users can add workout details with the following information: Date,Start time,End time,Body weight,Duration,Notes.
@@ -63,4 +63,5 @@ Log Out -
 2. After logging out, users are redirected to the sign-in page.
 
 **Screenshots **
+![image](https://github.com/Rulesofgames/FitnessTracker-MyFitnessBuddy/assets/63700137/ecb81275-522e-478d-a52f-b2a852e74358)
 
