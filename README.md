@@ -1,8 +1,7 @@
 # FitnessTracker-MyFitnessBuddy
 FitnessTracker-MyFitnessBuddy
 
-Demo Link: https:
-<iframe width="560" height="315" src="https://www.youtube.com/watch?v=TILvTbunSIE" frameborder="0" allowfullscreen></iframe>
+Demo Link: https://www.youtube.com/watch?v=TILvTbunSIE
 
 **Features**
 User Registration - 
