@@ -11,20 +11,20 @@ This project is a full-stack web application that leverages Spring Tool Suite (S
 **Features**
 
 User Registration -  
-1.New users can create an account by providing their email address and password.  
-2.The registration form ensures that users enter valid email addresses and secure passwords.  
+1. New users can create an account by providing their email address and password.  
+2. The registration form ensures that users enter valid email addresses and secure passwords.  
 
 Email Verification -  
-1.Upon successful registration, a welcome email is automatically sent to the user's provided email address.  
-2.This email serves as a confirmation of the registration process and welcomes the user to the platform.  
+1. Upon successful registration, a welcome email is automatically sent to the user's provided email address.  
+2. This email serves as a confirmation of the registration process and welcomes the user to the platform.  
 
 Password Criteria Validation -  
-1.During registration, the application checks whether the user's chosen password meets specified criteria, such as length and complexity.  
-2.jQuery AJAX is employed to validate the password on the client side, ensuring immediate feedback to the user.  
+1. During registration, the application checks whether the user's chosen password meets specified criteria, such as length and complexity.  
+2. jQuery AJAX is employed to validate the password on the client side, ensuring immediate feedback to the user.  
 
 Email Uniqueness Check -  
-1.To prevent multiple registrations with the same email address, the system uses jQuery AJAX to check if the entered email address is already associated with an existing account.  
-2.Users are notified in real-time if they attempt to register with an email address that is already in use.  
+1. To prevent multiple registrations with the same email address, the system uses jQuery AJAX to check if the entered email address is already associated with an existing account.  
+2. Users are notified in real-time if they attempt to register with an email address that is already in use.  
 
 Workout Tracking -  
 1. After logging in, users can add workout details with the following information: Date,Start time,End time,Body weight,Duration,Notes.
@@ -32,9 +32,9 @@ Workout Tracking -
 5. Users can delete individual workout entries if they wish to remove them from their workout history.
 
 Exercise Set Management -  
-1.Users can add exercise sets to each workout, specifying the following details for each set:  Exercise name, Weight(if applicable), Repetitions (Reps),Duration in minutes, Distance (if applicable), Calories burned (if applicable), Notes.  
-2.Users have the flexibility to edit individual exercise sets within a workout.  
-3.Users can delete specific exercise sets from their workout entries.  
+1. Users can add exercise sets to each workout, specifying the following details for each set:  Exercise name, Weight(if applicable), Repetitions (Reps),Duration in minutes, Distance (if applicable), Calories burned (if applicable), Notes.  
+2. Users have the flexibility to edit individual exercise sets within a workout.  
+3. Users can delete specific exercise sets from their workout entries.  
 
 Dashboard View -  
 1. The dashboard provides a comprehensive view of monthly workout details, organized by month.
@@ -52,8 +52,8 @@ The Statistics tab allows users to generate graphs and visualizations based on t
   4. Timeframe: Users can select the desired timeframe for the statistics, including options like the Last 7 Days, Last 1 Month, Last 3 Months, or Last 6 Months.  
 
 Profile Editing -  
-1.Users can edit their profiles, making changes to the following information: Email, Password, First Name, Last Name, Date of Birth (DOB), Address, Pincode, Country ,Gender.  
-2.User will receive confirmation message after successfully updating your profile information .  
+1. Users can edit their profiles, making changes to the following information: Email, Password, First Name, Last Name, Date of Birth (DOB), Address, Pincode, Country ,Gender.  
+2. User will receive confirmation message after successfully updating your profile information .  
 
 Log Out -  
 1. The "Log Out" feature allows users to securely log out of their accounts, terminating their current session.  
