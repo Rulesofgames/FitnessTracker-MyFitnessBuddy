@@ -6,10 +6,7 @@ FitnessTracker-MyFitnessBuddy
 **Overview**
 This project is a full-stack web application that leverages Spring Tool Suite (STS) for backend development and a combination of frontend technologies, including JavaScript, HTML, CSS, and jQuery. The backend, powered by Java and the Spring Framework, serves as the middleware, while MySQL is used as the database layer.
 
-**Technologies Used**
-Frontend: JavaScript, HTML, CSS, jQuery, AJAX
-Backend: Spring Tool Suite (STS), Java, Spring Framework
-Database: MySQL
+**Technologies Used**: JavaScript, HTML, CSS, jQuery, AJAX, Spring Tool Suite (STS), Java, Spring Data, Spring MVC, MySQL
 
 **Features**
 
@@ -26,7 +23,7 @@ Password Criteria Validation -
 2.jQuery AJAX is employed to validate the password on the client side, ensuring immediate feedback to the user.
 
 Email Uniqueness Check -
-To prevent multiple registrations with the same email address, the system uses jQuery AJAX to check if the entered email address is already associated with an existing account.
+1.To prevent multiple registrations with the same email address, the system uses jQuery AJAX to check if the entered email address is already associated with an existing account.
 2.Users are notified in real-time if they attempt to register with an email address that is already in use.
 
 Workout Tracking -
@@ -35,9 +32,9 @@ Workout Tracking -
 3. Users can delete individual workout entries if they wish to remove them from their workout history.
 
 Exercise Set Management -
-1.Users can add exercise sets to each workout, specifying the following details for each set: Exercise name, Weight(if applicable), Repetitions (Reps),Duration in minutes, Distance (if applicable), Calories burned (if applicable), Notes.
-2. Users have the flexibility to edit individual exercise sets within a workout.
-3. Users can delete specific exercise sets from their workout entries.
+1.Users can add exercise sets to each workout, specifying the following details for each set:  Exercise name, Weight(if applicable), Repetitions (Reps),Duration in minutes, Distance (if applicable), Calories burned (if applicable), Notes.
+2.Users have the flexibility to edit individual exercise sets within a workout.
+3.Users can delete specific exercise sets from their workout entries.
 
 Dashboard View -
 1. The dashboard provides a comprehensive view of monthly workout details, organized by month.
