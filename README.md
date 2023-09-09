@@ -10,13 +10,14 @@ This project is a full-stack web application that leverages Spring Tool Suite (S
 
 **Features**
 
-User Registration -
-1.New users can create an account by providing their email address and password.
-2.The registration form ensures that users enter valid email addresses and secure passwords.
+User Registration -  
+1.New users can create an account by providing their email address and password.  
+2.The registration form ensures that users enter valid email addresses and secure passwords.  
 
-Email Verification -
-1.Upon successful registration, a welcome email is automatically sent to the user's provided email address.
-2.This email serves as a confirmation of the registration process and welcomes the user to the platform.
+Email Verification -  
+1.Upon successful registration, a welcome email is automatically sent to the user's provided email address.  
+2.This email serves as a confirmation of the registration process and welcomes the user to the platform.  
+
 
 Password Criteria Validation -
 1.During registration, the application checks whether the user's chosen password meets specified criteria, such as length and complexity.
