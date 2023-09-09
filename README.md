@@ -1,9 +1,18 @@
 # FitnessTracker-MyFitnessBuddy
 FitnessTracker-MyFitnessBuddy
 
-Demo Link: https://www.youtube.com/watch?v=TILvTbunSIE
+**Demo Link:** https://www.youtube.com/watch?v=TILvTbunSIE
+
+**Overview**
+This project is a full-stack web application that leverages Spring Tool Suite (STS) for backend development and a combination of frontend technologies, including JavaScript, HTML, CSS, and jQuery. The backend, powered by Java and the Spring Framework, serves as the middleware, while MySQL is used as the database layer.
+
+**Technologies Used**
+Frontend: JavaScript, HTML, CSS, jQuery, AJAX
+Backend: Spring Tool Suite (STS), Java, Spring Framework
+Database: MySQL
 
 **Features**
+
 User Registration - 
 1.New users can create an account by providing their email address and password.
 2. The registration form ensures that users enter valid email addresses and secure passwords.
@@ -52,3 +61,6 @@ Profile Editing -
 Log Out - 
 1. The "Log Out" feature allows users to securely log out of their accounts, terminating their current session.
 2. After logging out, users are redirected to the sign-in page.
+
+**Screenshots **
+
