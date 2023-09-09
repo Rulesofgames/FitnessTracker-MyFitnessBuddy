@@ -87,6 +87,18 @@ Log Out -
 
 ![image](https://github.com/Rulesofgames/FitnessTracker-MyFitnessBuddy/assets/63700137/a2a8642b-f972-437c-ad41-f84759b2a4cf)
 
+![image](https://github.com/Rulesofgames/FitnessTracker-MyFitnessBuddy/assets/63700137/5da7b704-42cb-4fee-bf0d-e93a9e778c2f)
+
+![image](https://github.com/Rulesofgames/FitnessTracker-MyFitnessBuddy/assets/63700137/6da3cada-6e67-466f-9181-867363465864)
+
+![image](https://github.com/Rulesofgames/FitnessTracker-MyFitnessBuddy/assets/63700137/5a89579b-70fc-4b7a-bd1f-acbb37c996e6)
+
+![image](https://github.com/Rulesofgames/FitnessTracker-MyFitnessBuddy/assets/63700137/56fda9fa-c778-4e71-a553-70629068c1e8)
+
+
+
+
+
 
 
 
