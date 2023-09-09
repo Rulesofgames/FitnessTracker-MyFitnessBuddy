@@ -1,5 +1,5 @@
 # FitnessTracker-MyFitnessBuddy
-  FitnessTracker-MyFitnessBuddy
+FitnessTracker-MyFitnessBuddy
 
 **Demo Link:** https://www.youtube.com/watch?v=TILvTbunSIE
 
