@@ -32,7 +32,11 @@
 						// Iterate over the workout data and group by month-year
 						data.forEach(function (workout) {
 							let dateObj = new Date(workout.date);
-							let monthYear = dateObj.toLocaleString('default', {month: 'long', year: 'numeric'});
+							const monthFormatter={
+								month:'long',
+								year:'numeric'
+							};
+							let monthYear=new Intl.DateTimeFormat('en-US',monthFormatter).format(dateObj);
 							if (!workoutsByMonthYear[monthYear]) {
 								workoutsByMonthYear[monthYear] = [];
 							}
@@ -53,7 +57,11 @@
 								let eachWorkout = $("<div>").addClass("each-workout");
 								let dateObject = new Date(workout.date);
 								//update date of workout
-								dayDate = dateObject.toLocaleString('default', {month: 'long', day: 'numeric'});
+								const dayFormatter={
+									month: 'long', 
+									day: 'numeric'
+								};
+								dayDate=new Intl.DateTimeFormat('en-US',dayFormatter).format(dateObject);
 								//update day of workout
 								let dayDiv = $("<div>").addClass("each-workout__dayDate__day").text(weekdays[dateObject.getDay()]);
 								let date = $("<div>").addClass("each-workout__dayDate__date").text(dayDate);
